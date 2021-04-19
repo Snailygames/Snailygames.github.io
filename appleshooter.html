@@ -4,6 +4,16 @@
 <head>
   <script async src="https://arc.io/widget.min.js#c7kVikx6"></script>
   <script src="ruffle.js"></script>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.load("appleshooter.swf");
+    });
+</script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
 <style>
