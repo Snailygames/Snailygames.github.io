@@ -11,6 +11,8 @@
         const player = ruffle.createPlayer();
         const container = document.getElementById("container");
         container.appendChild(player);
+      player.style.width = "600px";
+      player.style.height = "400px";
         player.load("appleshooter.swf");
     });
 </script>
@@ -118,10 +120,7 @@ div.content {
 <div class="content">
 <body style="background-color:grey;">
 </div>
-  <div>
-    <div id="contentframe" style="position:absolute; top: 80px; left: 300px;">
-    <iframe id="ifrm" name="ifrm" src="https://levankipshidze.github.io/happy/index.html" scrolling="no" width="1000" height="570" align="center" frameborder="0">
-    </iframe>
-  </div>
+    
+</div>
 </body>
 </html>
