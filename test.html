@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<style>
+   body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   }
+   .result {
+      font-weight: 500;
+      font-size: 18px;
+      color: blueviolet;
+   }
+   .fullScreen {
+      width: 100vw;
+      height: 100vh;
+   }
+</style>
+</head>
+<body>
+<h1>Setting full screen iframe</h1>
+<iframe class="frame" src="https://www.wikipedia.com" width="300px" height="200px"
+></iframe>
+<button class="Btn" style="margin: 15px;">Fullscreen</button>
+<h3>Click on the above button to make the iframe go fullscreen</h3>
+<script>
+   let BtnEle = document.querySelector(".Btn");
+   let frameEle = document.querySelector(".frame");
+   BtnEle.addEventListener("click", () => {
+      frameEle.className = "fullScreen";
+   });
+</script>
+</body>
+</html>
