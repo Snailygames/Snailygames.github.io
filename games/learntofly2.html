@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<title>SnailyGames</title>
+<head>
+  <script async src="https://arc.io/widget.min.js#c7kVikx6"></script>
+  <script src="ruffle/ruffle.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
+</head>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #333;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 670px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+<header>
+ <div class="topnav">
+  <a href="/index.html">Home</a>
+  <a href="/about.html">About</a>
+</div>
+</header>
+<!-- The sidebar -->
+<div class="sidebar">
+  <a href="happywheels.html">Happy Wheels</a>
+  <a  href="gunblood.html">Gun Blood</a>
+    <a href="siftheads.html">Siftheads</a>
+  <a  href="siftheads2.html">Siftheads 2</a>
+    <a href="siftheads3.html">Siftheads 3</a>
+  <a  href="siftheads4.html">Siftheads 4</a>
+    <a href="siftheads5.html">Siftheads 5</a>
+    <a href="swordsandsandals.html">Swords and Sandals</a>
+  <a href="swordsandsandals2.html">Swords and Sandals 2</a>
+  <a  class="active" href="ducklife.html">Ducklife</a>
+    <a href="ducklife2.html">Ducklife 2</a>
+  <a  href="ducklife3.html">Ducklife 3</a>
+    <a href="ducklife4.html">Ducklife 4</a>
+  <a  href="professionalsniper.html">Professional Sniper</a>
+    <a href="professionalsniper2.html">Professional Sniper 2</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+<body style="background-color:grey;">
+
+        <div id='ruffle'></div>
+        <script src='ruffle/ruffle.js'></script>
+        <script>
+var swfobject = {};
+
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('learn to fly.swf', 'ruffle', 850, 640);
+        </script>
+
+</body>
+</html>
