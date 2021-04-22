@@ -90,6 +90,24 @@ div.content {
     float: none;
   }
 }
+#wrap {
+    /* Your styling. */
+    position: absolute;
+    z-index: 999999;
+     top: -200px;
+    left: 470px;
+    height: 100%;
+    text-align: center;
+
+    display: table;
+}
+
+#inside {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
 </style>
 
 <header>
@@ -126,8 +144,10 @@ div.content {
 <body style="background-color:grey;">
 </div>
   <div>
-    <div id="contentframe" style="position:absolute; top: 55px; left: 210px;">
+    <div id="wrap">
+      <div id="inside"
    <a src="Snailygames.github.io/games/1v1/index.html" click here to get to the game>
+    </div>
   </div>
 </body>
 </html>
