@@ -7,6 +7,9 @@
   
   <body>
     <div class="EverythingElse">
+      <div style="position: absolute; left: 10px; top: 70px;">
+        <button id="close" class="closing"><img src="bitcoin.png" width="125" height="125"/></button>
+      </div>
       Bitcoins:
       <span id="internet">
     0
@@ -31,42 +34,39 @@
       0
     </span>
         <br>
-        <br> Bitcoin Miner Cost:
+        <br> Bitminer Cost:
         <span id="devcost">
       100
     </span>
         <br>
         <button id="devbuyer" class="closing">
-      Buy Bitcoin Miner
+      Buy Bitminer
     </button>
         <span id="devs">
       0
     </span>
     <br>
     <br> 
-     Bitcoin Farmer Cost: 
+     Bitcoin Farm Cost: 
      <span id="bitcost">
        900
      </span>
      <br>
      <button id="bitbuyer">
-        Buy Bitcoin Farmer
+        Buy Bitcoin Farm
       </button>
       <span id="bits">
         0
       </span>
       </div>  
     </div>
-         <div style="position: absolute; left: 20px; top: 70px;">
-        <button id="close" class="closing"><img src="bitcoin.png" width="125" height="125"/></button>
-      </div>
     <div class="lul">
       Upgrades:
     </div>
 
     <div class="wrapper">
       <button id="clickupgrade1">
-        <img src="https://www.freeiconspng.com/uploads/vector-cursor-hand-clip-art--31.png" height="100" width="49">
+        <img src="https://www.freeiconspng.com/uploads/vector-cursor-hand-clip-art--31.png" height="50" width="49">
       </button>
       <button id="clickerupgrade1">
         <img src="https://vignette.wikia.nocookie.net/the-many-adventures-of-minecraft-rogers/images/1/1d/Clicker.png/revision/latest/scale-to-width-down/480?cb=20160605092223" height="50" width="49">
@@ -93,7 +93,7 @@ div {
   position: absolute;
   bottom: 70px;
 }
-div {text-align: center;}
+
     </style>
     <script>
     var internets = 0;
@@ -204,7 +204,7 @@ document.getElementById("clickerupgrade1").onclick = function() {
     internets = internets - 600
     cas = cas / 2
     det = 1
-    document.getElementById("clickerupgrade1").style.visibility = "visible"
+    document.getElementById("clickerupgrade1").style.visibility = "hidden"
   }
 }
 
