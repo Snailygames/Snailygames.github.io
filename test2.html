@@ -106,7 +106,7 @@ var newDev = false;
 var bits = 0;
 var bitcost = 1000;
 var newbit = false;
-var cac = 10;
+var cac = 1;
 var cas = 100
 var det = 0
 
@@ -123,7 +123,7 @@ setInterval(() => {
   if (newClicker == true) {
     internets = internets - Clickcost
     clickers = clickers + 1;
-    Clickcost = Math.floor(Clickcost + (15 / 100 * Clickcost));
+    Clickcost = Math.floor(Clickcost + (100 / 100 * Clickcost));
     newClicker = false;
   }
 
