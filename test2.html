@@ -108,7 +108,7 @@ var bitcost = 1000;
 var newbit = false;
 var cac = 1;
 var cas = 100
-var det = 1000
+var det = 0
 
 setInterval(() => {
   internetupd();
@@ -122,14 +122,14 @@ setInterval(() => {
 
   if (newClicker == true) {
     internets = internets - Clickcost
-    clickers = clickers + 1;
+    clickers = clickers + 10;
     Clickcost = Math.floor(Clickcost + (15 / 100 * Clickcost));
     newClicker = false;
   }
 
   if (newDev == true) {
     internets = internets - devcost
-    devs = devs + 1;
+    devs = devs + 5;
     devcost = Math.floor(devcost + (15 / 100 * devcost));
     newDev = false;
   }
