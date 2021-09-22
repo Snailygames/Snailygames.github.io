@@ -37,36 +37,6 @@ body {
   background-color: #4CAF50;
   color: white;
 }
-/* The side navigation menu */
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #333;
-  position: absolute;
-  height: 100%;
-  overflow: auto;
-}
-
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: white;
-  padding: 16px;
-  text-decoration: none;
-}
-
-/* Active/current link */
-.sidebar a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
@@ -75,24 +45,6 @@ div.content {
   height: 630px;
 }
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 500px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
 #wrap {
     /* Your styling. */
     position: absolute;
@@ -129,6 +81,7 @@ div.content {
     display: table-cell;
     vertical-align: middle;
 }
+  
 .box {
   background-color: lightgrey;
   width: 300px;
@@ -138,7 +91,7 @@ div.content {
  }
 
 </style>
-
+<!-- Header -->
 <header>
  <div class="topnav">
   <a href="#home">Home</a>
@@ -146,33 +99,7 @@ div.content {
   <a href="about.html">About</a>
 </div>
 </header>
-<!-- The sidebar -->
-<!--<div class="sidebar">
-  <a href="games/happywheels.html">Happy Wheels</a>
-  <a  href="games/gunblood.html">Gun Blood</a>
-  <a  href="games/dadnme.html">Dad 'n Me</a>
-  <a  href="games/multiplayerstuntcars.html">Multiplayer Stunt Cars</a>
-  <a  href="games/carsimulator.html">Car Simulator</a>
-  <a  href="games/1v1.html">1v1.lol</a>
-  <a  href="games/btd1.html">Bloons TD 1</a>
-  <a  href="games/btd2.html">Bloons TD 2</a>
-  <a href="games/siftheads.html">Siftheads</a>
-  <a  href="games/siftheads2.html">Siftheads 2</a>
-  <a href="games/siftheads3.html">Siftheads 3</a>
-  <a  href="games/siftheads4.html">Siftheads 4</a>
-  <a href="games/siftheads5.html">Siftheads 5</a>
-  <a  href="games/siftheadsult.html">Siftheads Ultimate</a>
-  <a href="games/swordsandsandals.html">Swords and Sandals</a>
-  <a href="gmaes/swordsandsandals2.html">Swords and Sandals 2</a>
-  <a  href="games/ducklife.html">Ducklife</a>
-  <a href="games/ducklife2.html">Ducklife 2</a>
-  <a  href="games/ducklife3.html">Ducklife 3</a>
-  <a href="games/ducklife4.html">Ducklife 4</a>
-  <a href="games/learntofly.html">Learn to fly</a>
-  <a  href="games/professionalsniper.html">Professional Sniper</a>
-  <a href="games/professionalsniper2.html">Professional Sniper 2</a>
-</div>
--->
+
 <!-- Page content -->
 <div class="content">
 <body style="background-color:grey;">
