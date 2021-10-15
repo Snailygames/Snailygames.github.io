@@ -1,364 +1,120 @@
-
 <!DOCTYPE html>
-
-<! 
-
-██╗████████╗███████╗███╗░░██╗░█████╗░██████╗░██╗██╗░░░░░██╗
-██║╚══██╔══╝╚════██║████╗░██║██╔══██╗██╔══██╗██║██║░░░░░██║
-██║░░░██║░░░░░███╔═╝██╔██╗██║███████║██████╦╝██║██║░░░░░██║
-██║░░░██║░░░██╔══╝░░██║╚████║██╔══██║██╔══██╗██║██║░░░░░╚═╝
-██║░░░██║░░░███████╗██║░╚███║██║░░██║██████╦╝██║███████╗██╗
-╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░╚═╝╚══════╝╚═╝
-
-Thanks for taking a look at the source code! Maybe leave me a follow and subscribe? :D
-
-<html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <title>Nabil's Games | Home</title>
-      <meta name="keywords" content="nabilafk, nabil's gameboy, nabilafk.github.io, unblocked games, nabil's games">
-      <meta name="theme-color" content="#36393F">
-        <meta property="og:image:url" content="https://i.ibb.co/n0DbR7k/Untitled-28-modified.png">
-        <meta property="og:image:secure_url" content="https://i.ibb.co/n0DbR7k/Untitled-28-modified.png">
-        <meta name="description" content="Play games online for free, unblocked!">
-        <link rel="icon" type="image/jpeg" sizes="180x180" href="https://i.ibb.co/n0DbR7k/Untitled-28-modified.png">
-      <title>Nabil's Games</title>
-     
-     <style>
-	     body {
-                   background-image: url('https://www.htmlcsscolor.com/preview/gallery/2E2E2E.png');
-  		   background-repeat: no-repeat;
-  		   background-attachment: fixed;
-  		   background-size: cover;
-	     }
-
-		
-	     h1 {
-                 font-family: 'Nunito', sans-serif;
-             }
-		
-	     h2 {
-                 font-family: 'Nunito', sans-serif;
-             }
-             h3 {
-                 font-family: 'Nunito', sans-serif;
-             }
-		
-	     ul {
-                 font-family: 'Nunito', sans-serif;
-		 color:black;
-             }
-		
-	     li {
-                 font-family: 'Nunito', sans-serif;
-		 color:black;
-             }
-		
-	     p {
-                 font-family: 'Nunito', sans-serif;
-             }
-          div {
-            font-family: 'Nunito', sans-serif
-          }
-       
-       .play {
-         
-       }
-       
-       html {
-    scroll-behavior: smooth;
-	--dark-main: #1e1e1e;
-	--main: #2e2e2e;
-	--seconday: #FF0000;
-	--dark-secondary: #CD001B;
-	--light-white: #e0e0e0;
+<html>
+<title>SnailyGames</title>
+<head>
+  <script async src="https://arc.io/widget.min.js#c7kVikx6"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
+</head>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-* {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  
-  body {
-    padding: 0;
-    margin: 0;
-  }
-  
-body div * {
-    padding: 0px;
-    margin: 0px
+.topnav {
+  overflow: hidden;
+  background-color: #333;
 }
 
-/* TOP GREETING */
-
-
-div.top-greeting {
-    position: relative;
-    height: 100vh;
-    background-color: var(--main);
-    vertical-align: middle;
-    text-align: center;
-}
-
-div.center-box {
-    position: absolute;
-    padding: 2%;
-    left: 50%;
-    top: 50%;
-    border-radius: 15px;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-}
-
-div.center-box *{  
-    text-align: center;
-    margin: 0 auto;
-}
-
-div.top-greeting div.center-box h1{
-    letter-spacing: 10px;
-    font-size: 6em;
-    color: white;
-    text-shadow: 4px 4px 0px #FF0000;
-}
-
-div.top-greeting div.center-box h2{
-    font-size: 2em;
-    color: white;
-    letter-spacing: 5px;
-}
-
-div.top-greeting div.center-box p{
-    max-width: 445px;
-    color: var(--light-white);
-    font-size: 1.1em;
-}
-       
-div.top-greeting div.center-box a, div.top-greeting div.center-box btn{
-    border-radius: 5px;
-
-    font-size: 1.5em;
-    padding: 10px 30px;
-    display: inline-block;
-    margin-top: 15px;
-    color: white;
-    background-color: #0c0c0c;
-    margin-right: 2%;
-    font-weight: 400;
-    -webkit-box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #FF0000;
-            box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #FF0000;
-    text-decoration: none;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
-}
-
-div.top-greeting div.center-box a:hover, div.top-greeting div.center-box btn:hover{
-    font-family: 'Roboto', sans-serif;
-    cursor: pointer;
-    background-color: #FF0000;
-    -webkit-box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #FF0000;
-            box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #FF0000;
-}
-
-@media screen and (max-width: 880px) {
-    div.top-greeting div.center-box h1{
-        letter-spacing: 0px;
-        font-size: 7em;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    div.top-greeting div.center-box h1{
-        font-size: 6em;
-        color: white;
-        text-shadow: 4px 4px 0px #FF0000;
-    }
-}
-  
-/* STATS */
-
-div.stats {
-    background-color: #222222;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 4% 5vh;
-}
-
-div.stats {
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  
-  justify-content: space-evenly;
-}
-
-div.stats > div  {
-  border-radius: 10px;
-  width: 25%;
-  display: inline-block;
-  padding: 8px 0;
-  background-color: var(--main);
-
-  transition: 0.3s all;
-}
-
-div.stats div:hover {
-  width: 40%;
-  letter-spacing: 5px;
-  font-weight: 800;
-  font-size: 1.2em;
-  box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #FF0000;
-  transition: 0.3s all;
-}
-
-div.stats div h1{
+.topnav a {
+  float: left;
+  color: #f2f2f2;
   text-align: center;
-  margin: auto;
-  padding: 10px;
-  color: white;
-  font-size: 2em;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-h1.number {
-  color: #FF0000 !important;
-  font-size: 4em !important;
-  font-weight: bold !important;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-@media screen and (max-width: 800px) {
-
-
-    div.stats  div {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    div.stats div:hover {
-      width: 100%;
-      box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #FF0000;
-      transition: 0.3s all;
-    }
-
-    div.stats div h1{
-        text-align: center;
-        margin: 0 auto;
-        padding: 10px;
-        font-size: 2em;
-        color: white;
-    }
-    
-
-    /* Features mobile version */
-
-    div.features div >*{      
-      display: block !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      text-align: unset !important;
-    }
-
-    div.features div div {
-      width: 95% !important;
-    }
-
-}
-
-div.features {
-  margin-top: 20px;
-  text-align: center;
+.topnav a.active {
+  background-color: #4CAF50;
   color: white;
 }
-div.features div {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-div.features div.normal-box {
-  background-color: #404040;
-}
-
-div.features div.dark-box {
-  
-}
-
-div.features div div{
-  width: 49%;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-}
-
-div.features div div *{
-  /*width: 49%;*/
-  /*display: inline-block;*/
-  vertical-align: middle;
-  text-align: center;
-  margin: auto;
-}
-
-img.feature-img-useful {
-  width: 100%;
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #333;
+  position: absolute;
   height: 100%;
-  max-width:  35em;
+  overflow: auto;
 }
 
-img.feature-img-moderation {
-  width: 90%;
-  height: 90%;
-  max-width: 40em;
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
 }
 
-img.feature-img-games {
-  width: 90%;
-  height: 60%;
-  max-width: 35em;
+/* Active/current link */
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 
-div.features div div h1 {
-  font-size: 1.5em;
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
 }
 
-div.features div div p {
-  font-size: 1em;
-  color: #e0e0e0;
-
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 670px;
 }
-	
-	</style>
 
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
 
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
 
-<img src="https://raw.githubusercontent.com/NabilAFK/gb/gh-pages/assets/img/play.png" width="80px" height="80px"/>
+<header>
+ <div class="topnav">
+  <a href="/index.html">Home</a>
+  <a href="/about.html">About</a>
+</div>
+</header>
+<!-- The sidebar -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="">
 
-     
-<div class="top-greeting" id="home">
-  <div class="center-box">
+<div ng-include="'../sidebar.html'"></div>
 
-            <h1><strong>Nabil's Games</strong></h1>
-           <h2><strong>Like to play games?</strong></h2>
-<h2><strong>---------------------------</strong></h2>
-            <p>Nabil's Games is the new best website to play <strong>unblocked</strong> games on along with lots of Gameboy Atari games & others. This website is <strong>constantly</strong> getting updated with changes, and even more games.</p>
-           <a href="https://nabilafk.github.io/gb/play.html" class="play">Play</a> 
-           <a href="https://nabilafk.github.io/gb/developer.html" class="play">Developer</a>
-	  <a href="https://nabilafk.github.io/gb/changelog.html" class="play">Changelog</a>
-         </div>
-      </div>
-      <div class="stats" id="stats">
-         <div class="l">
-            <h1 id="guild_count" class="number">115+</h1>
-            <h1><strong>Games</strong></h1>
-         </div>
-         <div class="m">
-            <h1 id="commands_count" class="number">4000+</h1>
-            <h1><strong>Trusted</strong></h1>
-         </div>
-         <div class="r">
-            <h1 id="cmdsLast24h_count" class="number">500+</h1>
-            <h1><strong>Daily Users</strong></h1>
-         </div>
-      </div>
-      <script src="_footer.js" id="footer-script"></script>
-      </body>
+<!-- Page content -->
+<div class="content">
+<body style="background-color:grey;">
+</div>
+  <div>
+    <div id="contentframe" style="position:absolute; top: 55px; left: 210px;">
+    <iframe id="ifrm" name="ifrm" src="https://mj89sp3sau2k7lj1eg3k40hkeppguj6j-a-sites-opensocial.googleusercontent.com/gadgets/ifr?url=http://www.gstatic.com/sites-gadgets/iframe/iframe.xml&container=enterprise&view=default&lang=en&country=ALL&sanitize=0&v=bddb412a9858f73a&libs=core&mid=122&parent=https://sites.google.com/site/unblockedgameswtf/retro-bowl#up_scroll=no&up_iframeURL=https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/226112567625258737/files/index.html&st=e%3DAIHE3cCxe65e8MJituwX496s38syhfPHn%252BO%252B8Y3keQeXmqsUvif6kmhHhOxcCwDSPd5PV3Kxq9WnwLMWZqmyeXkEgTjmEpc9edtnbmYHu%252FZH9zN5BUSEYhqdB%252Ffr%252FSUjpfJDMOUUn8DO%26c%3Denterprise&rpctoken=4548095910238780188" scrolling="no" width="1167" height="649" align="center" frameborder="0">
+    </iframe>
+  </div>
+    <div>
+         <a href="https://mj89sp3sau2k7lj1eg3k40hkeppguj6j-a-sites-opensocial.googleusercontent.com/gadgets/ifr?url=http://www.gstatic.com/sites-gadgets/iframe/iframe.xml&container=enterprise&view=default&lang=en&country=ALL&sanitize=0&v=bddb412a9858f73a&libs=core&mid=122&parent=https://sites.google.com/site/unblockedgameswtf/retro-bowl#up_scroll=no&up_iframeURL=https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/226112567625258737/files/index.html&st=e%3DAIHE3cCxe65e8MJituwX496s38syhfPHn%252BO%252B8Y3keQeXmqsUvif6kmhHhOxcCwDSPd5PV3Kxq9WnwLMWZqmyeXkEgTjmEpc9edtnbmYHu%252FZH9zN5BUSEYhqdB%252Ffr%252FSUjpfJDMOUUn8DO%26c%3Denterprise&rpctoken=4548095910238780188">Play in full screen</a>
+    </div>
+</body>
 </html>
