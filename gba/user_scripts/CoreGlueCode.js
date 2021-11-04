@@ -42,6 +42,7 @@ var games = {
 	"iridion":"Iridion 3D",
     "kirbymirror":"Kirby & The Amazing Mirror",
     "kirbynightmare":"Kirby: Nightmare in Dreamland",
+   "legendofzeldalinktothepast":"Legend Of Zelda : Link to the past",
     "mariokart":"Mario Kart: Super Circuit",
     "marioparty":"Mario Party Advance",
     "mariopinball":"Mario Pinball Land",
