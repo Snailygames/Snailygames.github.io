@@ -2,8 +2,10 @@
 <html>
 <title>SnailyGames</title>
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2033675061826667"
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2033675061826667"
      crossorigin="anonymous"></script>
+
   <script async src="https://arc.io/widget.min.js#c7kVikx6"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
@@ -11,12 +13,6 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
 }
 
 .topnav {
@@ -76,7 +72,7 @@ body {
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   margin-left: 200px;
-  padding: 1px 16px;
+  padding: 5px 16px;
   height: 630px;
 }
 
@@ -92,7 +88,7 @@ div.content {
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .sidebar a {
     text-align: center;
     float: none;
@@ -102,8 +98,8 @@ div.content {
     /* Your styling. */
     position: absolute;
     z-index: 999999;
-     top: -300px;
-    left: 570px;
+     top: -200px;
+    left: 470px;
     height: 100%;
     text-align: center;
 
@@ -119,8 +115,8 @@ div.content {
  #wrap2 {
     /* Your styling. */
     position: absolute;
-    z-index: 999999;
-     top: 50px;
+      z-index: 6;
+     top: 300px;
     left: 600px;
     height: 100%;
     text-align: center;
@@ -132,15 +128,16 @@ div.content {
     width: 100%;
     height: 100%;
     display: table-cell;
-    vertical-align: middle;
 }
-
+.ontop {
+z-index: 7;
+}
 </style>
 
 <header>
  <div class="topnav">
   <a href="index.html">Home</a>
-  <a class="active" href="#">About</a>
+  <a class="active" href="about.html">About</a>
 </div>
 </header>
 <!-- The sidebar -->
@@ -149,18 +146,25 @@ div.content {
 
 <div ng-include="'sidebarhome.html'"></div>
 
+ 
 <!-- Page content -->
 <div class="content">
 <body style="background-color:grey;">
 <div id=wrap>
   <div id=inside>
-<p> This website is still in development please excuse bugs </p>
-          <img src="img/pacman.jpeg" class="center" width="400" 
-     height="400"> 
+   <h1 style="font-size:40px;">Snaily Games</h1>    
+     <p style="font-size:35px;color:Red;">One Year Anniversary!</p>    
+    <h1 style="font-size:30px;">NOTE: Some Games may take a min to load</h1>
   </div> 
 </div>
-  </div> 
-</div>
-  
+     <div id=wrap2>
+    <div id=inside2>
+
+  <img src="img/pacman.jpeg"> 
+    </div>
+    <div>
+    
+
+    
 </body>
 </html>
