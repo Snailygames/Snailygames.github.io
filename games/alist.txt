@@ -1,4 +1,0 @@
-Doom
-Doom2
-ffnt
-Legostarwars
