@@ -51,7 +51,7 @@ var games = {
     "kirbynightmare":"Kirby: Nightmare in Dreamland",
    "legendofzeldalinktothepast":"Legend Of Zelda : Link to the past",
 	"legostarwars":"Lego Star Wars",
-	"legostarwars II":"Lego Star Wars II",
+	"legostarwarsII":"Lego Star Wars II",
     "mariokart":"Mario Kart: Super Circuit",
     "marioparty":"Mario Party Advance",
     "mariopinball":"Mario Pinball Land",
