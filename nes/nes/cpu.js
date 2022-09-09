@@ -1,4 +1,7 @@
 
+var games = {
+	"castle":"castle",
+  );
 Cpu = (function() {
   //adressing modes
   const IMP = 0; // also accumulator-mode
