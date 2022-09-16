@@ -8,10 +8,10 @@ let loopId = 0;
 let loadedName = "";
 
 let c = el("output");
-c.width = 512;
-c.height = 480;
+c.width = 256;
+c.height = 240;
 let ctx = c.getContext("2d");
-let imgData = ctx.createImageData(512, 480);
+let imgData = ctx.createImageData(0, 0);
 
 let controlsP1 = {
   arrowright: nes.INPUT.RIGHT,
