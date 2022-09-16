@@ -1,9 +1,10 @@
 let nes = new Nes();
 let audioHandler = new AudioHandler();
 let paused = false;
-let loaded = true;
+let loaded = false;
 let pausedInBg = false;
 let loopId = 0;
+let loadedName = "";
 
 let c = el("output");
 c.width = 256;
@@ -32,19 +33,38 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
-let rom = ["Castlevania.nes"];
-let name = "game";              
-let arr = new Uint8Array(rom);
-loadRom(arr, name);
-}
+zip.workerScriptsPath = "lib/";
+zip.useWebWorkers = false;
 
+el("rom").onchange = function(e) {
+  audioHandler.resume();
+  let freader = new FileReader();
+  freader.onload = function() {
+    let buf = freader.result;
+    if(e.target.files[0].name.slice(-4) === ".zip") {
+      // use zip.js to read the zip
 
-if(nes.loadRom(rom)) {
-  // after loading, do a hard reset
-  nes.reset(true);
-  log("Loaded Rom");
-} else {
-  log("failed to load rom");
+              }
+
+                  let rbuf = breader.result;
+                  let arr = new Uint8Array(rbuf);
+                  loadRom(arr, name);
+                  reader.close(function() {});
+                }
+                breader.readAsArrayBuffer(blob);
+              }, function(curr, total) {});
+              break;
+            }
+      });
+    } else {
+      // load rom normally
+      let parts = e.target.value.split("\\");
+      let name = parts[parts.length - 1];
+      let arr = new Uint8Array(buf);
+      loadRom(arr, name);
+    }
+  }
+  freader.readAsArrayBuffer(e.target.files[0]);
 }
 
 el("pause").onclick = function(e) {
