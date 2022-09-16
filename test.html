@@ -2,7 +2,10 @@
 <html>
 <title>SnailyGames</title>
 <head>
-<script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2033675061826667"
+     crossorigin="anonymous"></script>
+  <script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
+  <script src="ruffle/ruffle.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
 <style>
@@ -67,8 +70,8 @@ body {
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
+  margin-left: 250;
+  padding: 5px 16px;
   height: 670px;
 }
 
@@ -92,25 +95,52 @@ div.content {
 }
 </style>
 
-
 <!-- The sidebar -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body ng-app="">
 
-<div ng-include="'../sidebar.html'"></div>
+<div ng-include="'../sidebarhome.html'"></div>
 
 <!-- Page content -->
 <div class="content">
 <body style="background-color:grey;">
-</div>
-  <div>
-    <div id="contentframe" style="position:absolute; top: 55px; left: 210px;">
-    <iframe id="ifrm" name="ifrm" src="../gba/launcher.html#castlevania"
-" scrolling="no" width="1167" height="649" align="center" frameborder="0">
-    </iframe>
-  </div>
-    <div>
-  
-    </div>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="nes/style.css">
+  <title>NesJS</title>
+</head>
+<body>
+  <input id="rom" type="file">
+  <button id="pause">Pause</button>
+  <button id="reset">Reset</button>
+  <button id="hardreset">Power cycle</button>
+  <button id="runframe">Run 1 frame</button><br>
+  <canvas id="output"></canvas>
+  <pre id="log"></pre>
+  <p>
+    NesJs, by elzo_d. <a href="debug.html">Debugger</a>, <a href="nsfplayer.html">NsfJs</a>.<br>
+    Source on <a href="https://github.com/elzo-d/NesJs">Github</a>.
+  </p>
+
+  <script src="nes/lib/zip.js"></script>
+  <script src="nes/lib/inflate.js"></script>
+
+  <script src="nes/nes/mappers.js"></script>
+  <script src="nes/mappers/nrom.js"></script>
+  <script src="nes/mappers/mmc1.js"></script>
+  <script src="nes/mappers/uxrom.js"></script>
+  <script src="nes/mappers/cnrom.js"></script>
+  <script src="nes/mappers/mmc3.js"></script>
+  <script src="nes/mappers/axrom.js"></script>
+
+  <script src="nes/nes/cpu.js"></script>
+  <script src="nes/nes/pipu.js"></script>
+  <script src="nes/nes/apu.js"></script>
+  <script src="nes/nes/nes.js"></script>
+
+  <script src="nes/js/audio.js"></script>
+  <script src="nes/js/main.js"></script>
+
+
 </body>
 </html>
