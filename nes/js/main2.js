@@ -1,10 +1,9 @@
 let nes = new Nes();
 let audioHandler = new AudioHandler();
 let paused = false;
-let loaded = false;
+let loaded = true;
 let pausedInBg = false;
 let loopId = 0;
-let loadedName = "";
 
 let c = el("output");
 c.width = 256;
@@ -33,7 +32,7 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
-let rom =["nes/castlevania.nes"];
+let rom =["nes/Castlevania.nes"];
 let name = "game";              
 let arr = new Uint8Array(rom);
 loadRom(arr, name);
