@@ -11,9 +11,7 @@
 var games = {
 	"GTAdvance2":"GTAdvance2",
 	"GTAdvance3":"GTAdvance3",
-	"castlevania1":"Castlevaniaaos",
-	"castlevania2":"Castlevaniahod",
-	"castlevania3":"castlevaniacom",
+	"CastlevaniaCOM":"castlevaniacom",
     "advancewars":"Advance Wars",
     "advancewars2":"Advance Wars 2",
     "aladdin":"Aladdin",
