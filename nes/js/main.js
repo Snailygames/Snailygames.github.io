@@ -11,7 +11,7 @@ let c = el("output");
 c.width = 256;
 c.height = 240;
 let ctx = c.getContext("2d");
-let imgData = ctx.createImageData(0, 0);
+let imgData = ctx.createImageData(256, 240);
 
 let controlsP1 = {
   arrowright: nes.INPUT.RIGHT,
