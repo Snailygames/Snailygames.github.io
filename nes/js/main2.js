@@ -1,78 +1,190 @@
-// create a nes object
 let nes = new Nes();
+let audioHandler = new AudioHandler();
+let paused = false;
+let loaded = false;
+let pausedInBg = false;
+let loopId = 0;
+let loadedName = "";
 
-// load a rom (rom as an Uint8Array)
+let c = el("output");
+c.width = 256;
+c.height = 240;
+let ctx = c.getContext("2d");
+let imgData = ctx.createImageData(256, 240);
+
+let controlsP1 = {
+  arrowright: nes.INPUT.RIGHT,
+  arrowleft: nes.INPUT.LEFT,
+  arrowdown: nes.INPUT.DOWN,
+  arrowup: nes.INPUT.UP,
+  enter: nes.INPUT.START,
+  shift: nes.INPUT.SELECT,
+  z: nes.INPUT.B,
+  x: nes.INPUT.A
+}
+let controlsP2 = {
+  l: nes.INPUT.RIGHT,
+  j: nes.INPUT.LEFT,
+  k: nes.INPUT.DOWN,
+  i: nes.INPUT.UP,
+  p: nes.INPUT.START,
+  o: nes.INPUT.SELECT,
+  t: nes.INPUT.B,
+  g: nes.INPUT.A
+}
+
 if(nes.loadRom(rom)) {
   // after loading, do a hard reset
   nes.reset(true);
-  // rom is now loaded
+  log("Loaded Rom");
 } else {
-  // rom load failed
+  log("Failed to load rom");
 }
 
-// run a frame (should be called 60 times per second)
-nes.runFrame();
-
-// get the image output
-// data should be an Uint8Array with 256*240*4 values, 4 for each pixel (r, g, b, a),
-// as in the data for a canvas-2d-context imageData object
-nes.getPixels(data);
-// for example:
-// once
-let ctx = canvas.getContext("2d");
-let imgData = ctx.createImageData(256, 240);
-// every frame
-nes.getPixels(imgData.data);
-ctx.putImageData(imgData, 0, 0);
-
-// get the sound output
-// audioData should be an Float64Array, and will be filled with the amount of samples specified
-// (usually the sample rate divided by 60)
-nes.getSamples(audioData, 44100 / 60);
-// see js/audio.js for a example on how this can be played.
-// the basic idea is to use an ScriptProcessorNode, fill a buffer (audioData above)
-// with the samples and write it to a ring-buffer each frame, and have the ScriptProcessorNode's
-// callback read from the ring-buffer, making sure that the read-position is always behind the write-position
-
-// set controller state
-nes.setButtonPressed(1, nes.INPUT.B); // player 1 is now pressing the B button
-nes.setButtonPressed(2, nes.INPUT.SELECT); // player 2 is now pressing the select button
-nes.setButtonReleased(1, nes.INPUT.B); // player 1 released B
-nes.setButtonReleased(2, nes.INPUT.SELECT); // now no buttons are pressed anymore
-// nes.INPUT contains A, B, SELECT, START, UP, DOWN, LEFT and RIGHT
-
-
-// other functions (only call if a rom is loaded)
-
-nes.reset(); // soft reset (as in the reset button being pressed, ram is retained)
-nes.reset(true); // hard reset (as in the NES being turned off and on again, ram is reset)
-let state = nes.getState(); // get the full state as an object
-if(nes.setState(state)) {
-  // the state-object has been loaded
-} else {
-  // failed to load the state-object
-}
-let battery = nes.getBattery(); // get the battery-backed ram, or undefined if the loaded rom does not have battery-backed ram
-if(nes.setBattery(battery)) {
-  // loaded battery data
-  // (trying to load battery for a rom without battery-backed ram is also deemed successful)
-} else {
-  // failed to load battery data
+el("pause").onclick = function(e) {
+  if(paused && loaded) {
+    loopId = requestAnimationFrame(update);
+    audioHandler.start();
+    paused = false;
+    el("pause").innerText = "Pause";
+  } else {
+    cancelAnimationFrame(loopId);
+    audioHandler.stop();
+    paused = true;
+    el("pause").innerText = "Unpause";
+  }
 }
 
-nes.cycle(); // run a single PPU cycle (and a CPU cycle every three calls)
-nes.peak(0x8000); // peaks a value from the CPU address-space (will have no side effects)
-nes.mapper.ppuPeak(0x1204); // peaks a value from the PPU address-space (will have no side effects)
-nes.read(0x2007); // reads a value from the CPU address-space (can have side effects)
-nes.mapper.ppuRead(0x2690); // reads a value from the PPU address-space (can have side effects)
-nes.write(0x0723, 0x12); // writes a value to the CPU address-space
-nes.mapper.ppuWrite(0x23c0, 0x34); // Writes a value to the PPU address-space
-// note that reading from PPU address-space does not allow reading the palette from 0x3f00-0x3fff
-// it will return the nametable-data 'behind' it
+el("reset").onclick = function(e) {
+  nes.reset(false);
+}
 
-// callbacks, these will be called during execution of nes.cycle() or nes.runFrame() when they are assigned a function
-nes.onread = (address, value) => {console.log(`read ${value} from ${address}`)};
-nes.onwrite = (address, value) => {console.log(`wrote ${value} to ${address}`)};
-nes.onexecute = (address, value) => {console.log(`executed from ${address} (opcode byte: ${value})`)};
+el("hardreset").onclick = function(e) {
+  nes.reset(true);
+}
 
-// more functions and properties are available, just checking the .js files themselves is probably the easiest way to see these
+el("runframe").onclick = function(e) {
+  if(loaded) {
+    runFrame();
+  }
+}
+
+document.onvisibilitychange = function(e) {
+  if(document.hidden) {
+    pausedInBg = false;
+    if(!paused && loaded) {
+      el("pause").click();
+      pausedInBg = true;
+    }
+  } else {
+    if(pausedInBg && loaded) {
+      el("pause").click();
+      pausedInBg = false;
+    }
+  }
+}
+
+window.onpagehide = function(e) {
+  saveBatteryForRom();
+}
+
+function loadRom(rom, name) {
+  saveBatteryForRom();
+  if(nes.loadRom(rom)) {
+    // load the roms battery data
+    let data = localStorage.getItem(name + "_battery");
+    if(data) {
+      let obj = JSON.parse(data);
+      nes.setBattery(obj);
+      log("Loaded battery");
+    }
+    nes.reset(true);
+    if(!loaded && !paused) {
+      loopId = requestAnimationFrame(update);
+      audioHandler.start();
+    }
+    loaded = true;
+    loadedName = name;
+  }
+}
+
+function saveBatteryForRom() {
+  // save the loadedName's battery data
+  if(loaded) {
+    let data = nes.getBattery();
+    if(data) {
+      try {
+        localStorage.setItem(loadedName + "_battery", JSON.stringify(data));
+        log("Saved battery");
+      } catch(e) {
+        log("Failed to save battery: " + e);
+      }
+    }
+  }
+}
+
+function update() {
+  runFrame();
+  loopId = requestAnimationFrame(update);
+}
+
+function runFrame() {
+  nes.runFrame();
+  nes.getSamples(audioHandler.sampleBuffer, audioHandler.samplesPerFrame);
+  audioHandler.nextBuffer();
+  nes.getPixels(imgData.data);
+  ctx.putImageData(imgData, 0, 0);
+}
+
+function log(text) {
+  el("log").innerHTML += text + "<br>";
+  el("log").scrollTop = el("log").scrollHeight;
+}
+
+function el(id) {
+  return document.getElementById(id);
+}
+
+window.onkeydown = function(e) {
+  if(controlsP1[e.key.toLowerCase()] !== undefined) {
+    nes.setButtonPressed(1, controlsP1[e.key.toLowerCase()]);
+    e.preventDefault();
+  }
+  if(controlsP2[e.key.toLowerCase()] !== undefined) {
+    nes.setButtonPressed(2, controlsP2[e.key.toLowerCase()]);
+    e.preventDefault();
+  }
+}
+
+window.onkeyup = function(e) {
+  if(controlsP1[e.key.toLowerCase()] !== undefined) {
+    nes.setButtonReleased(1, controlsP1[e.key.toLowerCase()]);
+    e.preventDefault();
+  }
+  if(controlsP2[e.key.toLowerCase()] !== undefined) {
+    nes.setButtonReleased(2, controlsP2[e.key.toLowerCase()]);
+    e.preventDefault();
+  }
+  if(e.key.toLowerCase() === "m" && loaded) {
+    let saveState = nes.getState();
+    try {
+      localStorage.setItem(loadedName + "_savestate", JSON.stringify(saveState));
+      log("Saved state");
+    } catch(e) {
+      log("Failed to save state: " + e);
+    }
+  }
+  if(e.key.toLowerCase() === "n" && loaded) {
+    let data = localStorage.getItem(loadedName + "_savestate");
+    if(data) {
+      let obj = JSON.parse(data);
+      if(nes.setState(obj)) {
+        log("Loaded state");
+      } else {
+        log("Failed to load state");
+      }
+    } else {
+      log("No state saved yet");
+    }
+  }
+}
