@@ -20,8 +20,8 @@ let controlsP1 = {
   arrowup: nes.INPUT.UP,
   enter: nes.INPUT.START,
   shift: nes.INPUT.SELECT,
-  a: nes.INPUT.B,
-  z: nes.INPUT.A
+  z: nes.INPUT.B,
+  x: nes.INPUT.A
 }
 let controlsP2 = {
   l: nes.INPUT.RIGHT,
