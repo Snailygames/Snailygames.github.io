@@ -1,8 +1,13 @@
+
+
 <!DOCTYPE html>
 <html>
 <title>SnailyGames</title>
 <head>
-<script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2033675061826667"
+     crossorigin="anonymous"></script>
+  <script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
+  <script src="ruffle/ruffle.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
 <style>
@@ -67,8 +72,8 @@ body {
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
+  margin-left: 250;
+  padding: 5px 16px;
   height: 670px;
 }
 
@@ -92,7 +97,6 @@ div.content {
 }
 </style>
 
-
 <!-- The sidebar -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body ng-app="">
@@ -102,50 +106,25 @@ div.content {
 <!-- Page content -->
 <div class="content">
 <body style="background-color:grey;">
-</div>
-  <div>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <title>NesJS</title>
-</head>
-<body>
-  <input id="rom" type="file">
-  <button id="pause">Pause</button>
-  <button id="reset">Reset</button>
-  <button id="hardreset">Power cycle</button>
-  <button id="runframe">Run 1 frame</button><br>
-  <canvas id="output"></canvas>
-  <pre id="log"></pre>
-  <p>
-    NesJs, by elzo_d. <a href="debug.html">Debugger</a>, <a href="nsfplayer.html">NsfJs</a>.<br>
-    Source on <a href="https://github.com/elzo-d/NesJs">Github</a>.
-  </p>
 
-  <script src="lib/zip.js"></script>
-  <script src="lib/inflate.js"></script>
+        <div id='ruffle'></div>
+        <script src='ruffle/ruffle.js'></script>
+        <script>
+var swfobject = {};
 
-  <script src="nes/mappers.js"></script>
-  <script src="mappers/nrom.js"></script>
-  <script src="mappers/mmc1.js"></script>
-  <script src="mappers/uxrom.js"></script>
-  <script src="mappers/cnrom.js"></script>
-  <script src="mappers/mmc3.js"></script>
-  <script src="mappers/axrom.js"></script>
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
 
-  <script src="nes/cpu.js"></script>
-  <script src="nes/pipu.js"></script>
-  <script src="nes/apu.js"></script>
-  <script src="nes/nes.js"></script>
+swfobject.embedSWF('alien_hominid.swf', 'ruffle', 910, 670);
+        </script>
 
-  <script src="js/audio.js"></script>
-  <script src="js/main.js"></script>
-
-</body>
-</html>
-  </div>
-    <div>
-  
-    </div>
 </body>
 </html>
