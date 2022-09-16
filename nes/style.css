@@ -22,8 +22,8 @@ pre {
 }
 
 #output {
-  width: 1024px;
-  height: 960px;
+  width: 532px;
+  height: 500px;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
