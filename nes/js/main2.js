@@ -32,7 +32,7 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
-let rom =["nes/Castlevania.nes"];
+let rom =["Castlevania.nes"];
 let name = "game";              
 let arr = new Uint8Array(rom);
 loadRom(arr, name);
