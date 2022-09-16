@@ -33,12 +33,20 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
+let rom =["nes/castlevania.nes"];
+let name = "game";              
+let arr = new Uint8Array(rom);
+loadRom(arr, name);
+reader.close(function() {});
+}
+             
+
 if(nes.loadRom(rom)) {
   // after loading, do a hard reset
   nes.reset(true);
-  log("Loaded Rom");
+  // rom is now loaded
 } else {
-  log("Failed to load rom");
+  // rom load failed
 }
 
 el("pause").onclick = function(e) {
