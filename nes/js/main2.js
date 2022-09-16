@@ -37,16 +37,15 @@ let rom =["nes/castlevania.nes"];
 let name = "game";              
 let arr = new Uint8Array(rom);
 loadRom(arr, name);
-reader.close(function() {});
 }
-             
+
 
 if(nes.loadRom(rom)) {
   // after loading, do a hard reset
   nes.reset(true);
-  // rom is now loaded
+  log("Loaded Rom");
 } else {
-  // rom load failed
+  log("failed to load rom");
 }
 
 el("pause").onclick = function(e) {
