@@ -26,12 +26,9 @@
     var input = document.getElementById('input');
     var fps = document.getElementById('fps');
 
-    input.onchange = function(event) {
-      var file = event.target.files[0];
-      if (file) {
-        nes.rom.load(file).then(nes.start);
-      }
-    };
+
+    nes.rom.load(file).then(nes.start);
+
 
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
