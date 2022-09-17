@@ -1,10 +1,10 @@
 let nes = new Nes();
 let audioHandler = new AudioHandler();
 let paused = false;
-let loaded = false;
+let loaded = true;
 let pausedInBg = false;
 let loopId = 0;
-let loadedName = "";
+let loadedName = "Castlevania";
 
 let c = el("output");
 c.width = 256;
