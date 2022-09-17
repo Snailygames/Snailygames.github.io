@@ -2,10 +2,24 @@
 <html>
 <head>
   <script src="cfxnes.js"></script>
-  <script src="settings.js"></script>
 </head>
 <body>
-  <canvas id="cfxnes"></canvas> <!-- Rendering target -->
+<canvas id="cfxnes"><canvas>
+<script>
+  const canvas = document.getElementById('cfxnes');
+
+  // 1. There is a canvas element with 'cfxnes' ID.
+  let nes = cfxnes();
+  nes.video.output === canvas; // true
+
+  // 2. Use the 'video.output' initialization option.
+  nes = cfxnes({
+    video: {output: canvas}
+  });
+
+  // 3. Use the 'nes.video.output' property
+  nes.video.output = canvas;
+</script>
   <script>
     cfxnes({rom: 'Castlevania.nes'}); // URL of a ROM image to load
   </script>
