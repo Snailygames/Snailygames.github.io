@@ -35,9 +35,8 @@ let controlsP2 = {
 
 
 
-el("rom").onchange = function(e) {
+function loadRom() {
   audioHandler.resume();
-  found = true;
   let rbuf = ("rom")
   let arr = new Uint8Array(rbuf);
   loadRom(arr, name);
