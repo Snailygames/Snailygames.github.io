@@ -37,7 +37,7 @@ let controlsP2 = {
 
 function loadRom() {
   audioHandler.resume();
-  let rbuf = ("rom")
+  let rbuf = el("rom");
   let arr = new Uint8Array(rbuf);
   loadRom(arr, name);
 }
