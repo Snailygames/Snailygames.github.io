@@ -23,16 +23,10 @@
   <div id="fps"></div>
   <script>
     var nes = cfxnes({video: {scale: 2}});
-    var input = document.getElementById('input');
     var fps = document.getElementById('fps');
 
-    input.onchange = function(event) {
-      var file = event.target.files[0];
-      if (file) {
-        nes.rom.load(file).then(nes.start);
-      }
-    };
 
+cfxnes({rom: 'Castlevania.nes'});
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
