@@ -13,7 +13,6 @@
     <canvas id="cfxnes"></canvas>
   </div>
   <div>
-    <input id="input" type="file">
     <button onclick="nes.start()">Start</button>
     <button onclick="nes.stop()">Stop</button>
     <button onclick="nes.power()">Power</button>
@@ -21,14 +20,9 @@
   </div>
   <div id="fps"></div>
   <script>
-    
     cfxnes({rom: 'Castlevania.nes'});
-    nes.start();
     var nes = cfxnes({video: {scale: 2}});
-    var input = document.getElementById('input');
     var fps = document.getElementById('fps');
-
-
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
