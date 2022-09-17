@@ -33,60 +33,16 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
-zip.workerScriptsPath = "lib/";
-zip.useWebWorkers = false;
+
 
 el("rom").onchange = function(e) {
   audioHandler.resume();
-  let freader = new FileReader();
-  freader.onload = function() {
-    let buf = freader.result;
-    if(e.target.files[0].name.slice(-4) === ".zip") {
-      // use zip.js to read the zip
-      let blob = new Blob([buf]);
-      zip.createReader(new zip.BlobReader(blob), function(reader) {
-        reader.getEntries(function(entries) {
-          if(entries.length) {
-            let found = false;
-            for(let i = 0; i < entries.length; i++) {
-              let name = entries[i].filename;
-              if(name.slice(-4) !== ".nes" && name.slice(-4) !== ".NES") {
-                continue;
-              }
-              found = true;
-              log("Loaded \"" + name + "\" from zip");
-              entries[i].getData(new zip.BlobWriter(), function(blob) {
-                let breader = new FileReader();
-                breader.onload = function() {
-                  let rbuf = breader.result;
-                  let arr = new Uint8Array(rbuf);
-                  loadRom(arr, name);
-                  reader.close(function() {});
-                }
-                breader.readAsArrayBuffer(blob);
-              }, function(curr, total) {});
-              break;
-            }
-            if(!found) {
-              log("No .nes file found in zip");
-            }
-          } else {
-            log("Zip file was empty");
-          }
-        });
-      }, function(err) {
-        log("Failed to read zip: " + err);
-      });
-    } else {
-      // load rom normally
-      let parts = e.target.value.split("\\");
-      let name = parts[parts.length - 1];
-      let arr = new Uint8Array(buf);
-      loadRom(arr, name);
-    }
-  }
-  freader.readAsArrayBuffer(e.target.files[0]);
+  found = true;
+  let rbuf = ("rom")
+  let arr = new Uint8Array(rbuf);
+  loadRom(arr, name);
 }
+
 
 el("pause").onclick = function(e) {
   if(paused && loaded) {
