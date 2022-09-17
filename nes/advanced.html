@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advanced</title>
+  <title>02 - Advanced</title>
   <script src="cfxnes.js"></script>
 </head>
 <style type="text/css">
@@ -14,7 +14,6 @@
   </div>
   <div>
     <input id="input" type="file">
-    <button onclick="input.click()">Open ROM</button>
     <button onclick="nes.start()">Start</button>
     <button onclick="nes.stop()">Stop</button>
     <button onclick="nes.power()">Power</button>
@@ -22,11 +21,18 @@
   </div>
   <div id="fps"></div>
   <script>
+    cfxnes({rom: 'Castlevania.nes'});
     var nes = cfxnes({video: {scale: 2}});
+    var input = document.getElementById('input');
     var fps = document.getElementById('fps');
 
+    input.onchange = function(event) {
+      var file = event.target.files[0];
+      if (file) {
+        nes.rom.load(file).then(nes.start);
+      }
+    };
 
-cfxnes({rom: 'Castlevania.nes'});
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
