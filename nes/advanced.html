@@ -20,15 +20,9 @@
   </div>
   <div id="fps"></div>
   <script>
-    const nes = cfxnes({rom: 'Castlevania.nes'});
-    nes.rom.load(Castlevania.nes)
-  .then(() => {nes.start();})
-  .catch(error => {/* handle error */})
+    cfxnes({rom: 'Castlevania.nes'});
     var nes = cfxnes({video: {scale: 2}});
-    var fps = document.getElementById('fps');
-    setInterval(function() {
-      fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
-    }, 500);
+
   </script>
 </body>
 </html>
