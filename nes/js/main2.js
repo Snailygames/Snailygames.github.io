@@ -33,15 +33,13 @@ let controlsP2 = {
   g: nes.INPUT.A
 }
 
-
-
-function loadRom() {
-  audioHandler.resume();
-  let rbuf = el("rom");
-  let arr = new Uint8Array(rbuf);
-  loadRom(arr, name);
+if(nes.loadRom(rom)) {
+  // after loading, do a hard reset
+  nes.reset(true);
+  // rom is now loaded
+} else {
+  // rom load failed
 }
-
 
 el("pause").onclick = function(e) {
   if(paused && loaded) {
