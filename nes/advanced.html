@@ -20,14 +20,21 @@
   </div>
   <div id="fps"></div>
   <script>
-    const nes = cfxnes();
-    const {rom} = nes;
-    
-    nes.rom.load('Castlevania.nes').then(() => {
-    
-    }).catch(error => {
-    
-    })
+const nes = cfxnes();
+const {rom} = nes;
+
+rom.loaded; // false
+rom.sha1; // null
+
+// Load ROM image from relative URL
+rom.load('Castlevania.nes').then(() => {
+  rom.loaded; // true
+  rom.sha1; // SHA-1 of the loaded image
+  rom.unload(); // Unload the image
+  rom.loaded; // false;
+}).catch(error => {
+  console.error('Oops!', error);
+})
     
     var nes = cfxnes({video: {scale: 2}});
 
