@@ -20,7 +20,12 @@
   </div>
   <div id="fps"></div>
   <script>
-    cfxnes({rom: 'Castlevania.nes'});
+    nes.rom.load('Castlevania.nes').then(() => {
+    
+    }).catch(error => {
+    
+    })
+    
     var nes = cfxnes({video: {scale: 2}});
 
   </script>
