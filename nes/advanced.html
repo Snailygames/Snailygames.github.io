@@ -20,6 +20,9 @@
   </div>
   <div id="fps"></div>
   <script>
+    const nes = cfxnes();
+    const {rom} = nes;
+    
     nes.rom.load('Castlevania.nes').then(() => {
     
     }).catch(error => {
