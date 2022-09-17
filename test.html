@@ -105,39 +105,23 @@ div.content {
 <div class="content">
 <body style="background-color:grey;">
 
-<head>
-  <link rel="stylesheet" type="text/css" href="nes/style.css">
-  <title>NesJS</title>
+  <head>
+  <title>02 - Advanced</title>
+  <script src="nes/cfxnes.js"></script>
 </head>
+<style type="text/css">
+  body { text-align: center; }
+  input { display: none; }
+</style>
 <body>
- <!-- <input id="rom" type="file">-->
-  <script id="rom" src="nes/Castlevania.nes"></script>
-  <button id="pause">Pause</button>
-  <button id="reset">Reset</button>
-  <button id="hardreset">Power cycle</button>
-  <button id="runframe">Run 1 frame</button><br>
-  <canvas id="output"></canvas>
-  <pre id="log"></pre>
-
-  <script src="nes/lib/zip.js"></script>
-  <script src="nes/lib/inflate.js"></script>
-
-  <script src="nes/nes/mappers.js"></script>
-  <script src="nes/mappers/nrom.js"></script>
-  <script src="nes/mappers/mmc1.js"></script>
-  <script src="nes/mappers/uxrom.js"></script>
-  <script src="nes/mappers/cnrom.js"></script>
-  <script src="nes/mappers/mmc3.js"></script>
-  <script src="nes/mappers/axrom.js"></script>
-
-  <script src="nes/nes/cpu.js"></script>
-  <script src="nes/nes/pipu.js"></script>
-  <script src="nes/nes/apu.js"></script>
-  <script src="nes/nes/nes.js"></script>
-
-  <script src="nes/js/audio.js"></script>
-  <script src="nes/js/main2.js"></script>
-
+  <div>
+    <canvas id="cfxnes"></canvas>
+  </div>
+  <script>
+    cfxnes({rom: 'nes/Castlevania.nes'});
+    cfxnes({video: {scale: 3}});
+  </script>
+</body>
 
 </body>
 </html>
