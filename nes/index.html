@@ -27,9 +27,6 @@
       .then(nes.start)
       .then(nes.nvram);
     
-    
-    
-
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
