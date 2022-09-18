@@ -20,8 +20,7 @@
   </div>
   <div id="fps"></div>
   <script>
-    var nes = cfxnes({video: {scale: 2}});
-    var input = document.getElementById('input');
+    var nes = cfxnes({video: {scale: 2.8}});
     var fps = document.getElementById('fps');
 
     nes.rom.load('rom/KirbyAdventure.nes').then(nes.start);
