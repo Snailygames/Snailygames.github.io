@@ -25,7 +25,7 @@
 
     nes.rom.load('rom/KirbyAdventure.nes')
       .then(nes.start)
-      .then(nvram.data);
+      .then(nes.nvram);
     
 
     setInterval(function() {
