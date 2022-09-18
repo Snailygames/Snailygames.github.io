@@ -17,10 +17,12 @@
     <button onclick="nes.stop()">Stop</button>
     <button onclick="nes.power()">Power</button>
     <button onclick="nes.reset()">Reset</button>
+    <button onclick="fullscreen.enter()">FullScreen</button>
   </div>
   <div id="fps"></div>
   <script>
     const nes = cfxnes();
+    const {fullscreen} = nes;
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
