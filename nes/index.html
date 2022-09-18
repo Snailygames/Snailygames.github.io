@@ -26,10 +26,8 @@
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
-    
+     nes.nvram();
       nes.rom.load('rom/KirbyAdventure.nes')
-          .then(nes.getNVRAM)
-          .then(nes.saveNVRAM)
           .then(nes.start);
     
 
