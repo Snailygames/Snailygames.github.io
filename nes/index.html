@@ -20,13 +20,16 @@
   </div>
   <div id="fps"></div>
   <script>
-    var nes = cfxnes({video: {scale: 2.8}});
+    const nes = cfxnes();
     var fps = document.getElementById('fps');
 
+    cfxnes({video: {scale: 2.8}});
     nes.rom.load('rom/KirbyAdventure.nes')
-      .then(rom.sha1)
-      .then(nes.start)
-      .then(nes.nvram);
+      .then(nes.start);
+    
+    if (nvram.data) {
+     nvram.data.fill(0); // Clear NVRAM of the currently running game
+    }
     
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
