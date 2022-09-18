@@ -28,7 +28,7 @@
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/KirbyAdventure.nes')
-          .then(nes.nvram.data)
+          .then(nes.nvram)
           .then(nes.start);
 
     setInterval(function() {
