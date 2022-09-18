@@ -106,11 +106,12 @@ div.content {
   <div>
     <canvas id="cfxnes"></canvas>
   </div>
+    <script src="../nes/config.js"></script>
   <script>
-    cfxnes({rom: '../nes/rom/bwars.nes'});
+    nes.rom.load('../nes/rom/bwars.nes')
+      .then(nes.start);
   </script>
-  <script src="../nes/config.js"></script>
-  <div ng-include="'disclamer.html'"></div>
+  <div ng-include="'../nes/bottom.html'"></div>
   
 </body>
 </html>
