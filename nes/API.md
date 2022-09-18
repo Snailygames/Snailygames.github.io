@@ -105,6 +105,43 @@ Emulator instance returned by the `cfxnes` function.
 | inputs | `object` | no | | [Inputs module](#user-content-nesinputs) |
 | config | `object` | no | | [Configuration module](#user-content-nesconfig) |
 
+## nes.nvram
+
+Module that provides access to NVRAM.
+
+NVRAM (Non-Volatile RAM) is a memory that is usually battery-backed and serves as a place for game saves. NVRAM is only used by some games (e.g., The Legend of Zelda or Final Fantasy).
+
+#### Properties
+
+| Name | Type | Writable | Default | Description |
+|------|------|----------|---------|-------------|
+| data | `Uint8Array` | no | `null` | Typed array that provides direct access to NVRAM data. The property is `null` when NVRAM is not avaialable. |
+
+#### Methods
+
+| Signature | Returns | Description |
+|-----------|---------|-------------|
+| load() | `Promise` | Loads NVRAM of the currently running game from IndexedDB. The method does nothing when there are no data to load or the NVRAM is not available. |
+| save() | `Promise` | Stores NVRAM of the currently running game into IndexedDB. The method does nothing when the NVRAM is not available. |
+| deleteAll() | `Promise` | Deletes all NVRAMs stored in IndexedDB. |
+
+``` javascript
+const nes = cfxnes();
+const {rom, nvram} = nes;
+nvram.save()                    // Persist NVRAM of the currently running game
+  .then(() => rom.load(source)) // Load a different game
+  .then(() => nvram.load())     // Restore its NVRAM
+  .catch(error => {
+    console.error('Oops!', error);
+  });
+// Clear NVRAM of the currently running game
+if (nvram.data) {
+  nvram.data.fill(0);
+}
+// Delete all stored NVRAMs.
+nvram.deleteAll();
+```
+
 ### Methods
 
 | Signature | Description |
