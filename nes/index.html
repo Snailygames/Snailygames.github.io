@@ -25,11 +25,8 @@
 
     cfxnes({video: {scale: 2.8}});
     nes.rom.load('rom/KirbyAdventure.nes')
+      .then(nvram.data)
       .then(nes.start);
-    
-    if (nvram.data) {
-     nvram.data.fill(0); // Clear NVRAM of the currently running game
-    }
     
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
