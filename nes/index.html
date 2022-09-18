@@ -23,12 +23,15 @@
   <script>
     const nes = cfxnes();
     const {fullscreen} = nes;
+    const {rom, nvram} = nes;
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
     nes.rom.load('rom/KirbyAdventure.nes')
-      .then(nes.start);
-    
+      .then(nes.start)
+      .then(nvram.save)
+      .then(nvram.load);
+   
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
