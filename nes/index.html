@@ -27,10 +27,13 @@
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
+    
     nes.rom.load('rom/KirbyAdventure.nes')
-      .then(nes.start)
-      .then(nvram.save)
-      .then(nvram.load);
+      .then(nes.start);
+    
+    nvram.save()                    // Persist NVRAM of the currently running game
+     .then(() => nvram.load());   // Restore its NVRAM
+
    
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
