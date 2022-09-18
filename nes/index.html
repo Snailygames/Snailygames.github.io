@@ -28,7 +28,7 @@
     cfxnes({video: {scale: 2.8}});
     
       nes.rom.load('rom/KirbyAdventure.nes')
-          .then(expect(nes.nvram).to.be.an('uint8array'))
+          .then(nes.getNVRAM)
           .then(nes.start);
 
 
