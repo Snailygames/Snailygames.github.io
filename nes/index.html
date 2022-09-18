@@ -24,10 +24,11 @@
     var input = document.getElementById('input');
     var fps = document.getElementById('fps');
 
-
     nes.rom.load('rom/KirbyAdventure.nes').then(nes.start);
-
-
+    
+    var data = getData(); // Uint8Array, ArrayBuffer, Array, Blob
+    rom.load(data).then(nes.reset);
+    
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
