@@ -28,11 +28,11 @@
 
     cfxnes({video: {scale: 2.8}});
     
-    nes.rom.load('rom/KirbyAdventure.nes')
-      .then(nes.start);
-    
-    nvram.save()                    // Persist NVRAM of the currently running game
-     .then(() => nvram.load());   // Restore its NVRAM
+      nes.rom.load('rom/KirbyAdventure.nes').then(() => {
+          expect(nes.nvram).to.be.an('uint8array');
+          expect(nes.nvram).to.have.lengthOf(0x2000);
+        });
+      });
 
    
     setInterval(function() {
