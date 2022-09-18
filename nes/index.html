@@ -23,16 +23,15 @@
   <script>
     const nes = cfxnes();
     const {fullscreen} = nes;
-    const {rom, nvram} = nes;
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
     
-      nes.rom.load('rom/KirbyAdventure.nes').then(() => {
-          expect(nes.nvram).to.be.an('uint8array');
-          expect(nes.nvram).to.have.lengthOf(0x2000);
-        });
-      });
+      nes.rom.load('rom/KirbyAdventure.nes')
+          .then(expect(nes.nvram).to.be.an('uint8array'))
+          .then(nes.start);
+
+
 
    
     setInterval(function() {
