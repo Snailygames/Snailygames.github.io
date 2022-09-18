@@ -24,6 +24,7 @@
     var fps = document.getElementById('fps');
 
     nes.rom.load('rom/KirbyAdventure.nes')
+      .then(rom.sha1)
       .then(nes.start)
       .then(nes.nvram);
     
