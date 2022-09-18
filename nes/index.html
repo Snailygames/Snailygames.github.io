@@ -25,7 +25,8 @@
 
     nes.rom.load('rom/KirbyAdventure.nes')
       .then(nes.start)
-      .then(nes.getNVRAM);
+      .then(nvram.data);
+    
 
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
