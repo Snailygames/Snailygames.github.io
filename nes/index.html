@@ -27,13 +27,12 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     
-      // Forcing IndexedDB here.
+          // Forcing IndexedDB here.
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = 'newkey';
-        var buffer = new ArrayBuffer(8);
-        var value = new Uint8Array(buffer);
+        var value = new Uint8Array(8);
+        value[0] = 65
         var UNKNOWN_KEY = 'unknown_key';
-        value.set(nes.nvram);
 
         localforage.setItem(key, value, function() {
           console.log('Saved: ' + value);
@@ -53,6 +52,7 @@
           });
         });
       });
+    
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
