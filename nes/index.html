@@ -51,7 +51,7 @@ localforage.config({
 function saveNVRAM() {
   if (nes.nvram) {
     key[nes.rom.sha1] = cloneNVRAM(nes.nvram)
-    .then(console.log("saving"));
+    console.log("saving");
   }
 }
 
