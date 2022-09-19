@@ -30,7 +30,7 @@
     
 // Key: SHA-1 of a game ROM
 // Value: Uint8Array with game save data
-const savesDB = {};
+const savesDB = db.transaction(IDBTransaction.READ_WRITE);
 
 function loadNVRAM() {
   if (nes.nvram && nes.rom.sha1 in savesDB) {
