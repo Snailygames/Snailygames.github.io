@@ -40,14 +40,25 @@ localforage.config({
   var key = nes.rom.sha1;
   var value= nes.nvram;
 
-  // var value = undefined;
-function saveNVRAM() {
-  localforage.setItem(key, value)
-   .then(console.log("Saving"));
+    
+    function loadNVRAM() {
+  if (nes.nvram && nes.rom.sha1 in value, key) {
+    nes.nvram.set(key[nes.rom.sha1])
+    .then(console.log("loading"));
+  }
 }
- function loadNVRAM() { 
-  localforage.getItem(key, value)
-   .then(console.log("Loading"));
+
+function saveNVRAM() {
+  if (nes.nvram) {
+    key[nes.rom.sha1] = cloneNVRAM(nes.nvram)
+    .then(console.log("saving"));
+  }
+}
+
+function cloneNVRAM(src) {
+  const dst = new Uint8Array(src.length);
+  dst.set(src);
+  return dst;
 }
 
     cfxnes({video: {scale: 2.8}});
@@ -55,6 +66,7 @@ function saveNVRAM() {
       nes.rom.load('rom/loz.nes')
          .then(loadNVRAM())
          .then(nes.start);
+    
 
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
