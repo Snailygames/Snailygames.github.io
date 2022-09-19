@@ -28,29 +28,36 @@
     const {rom} = nes;
     var fps = document.getElementById('fps');
 
+    // Feel free to change the drivers order :)
+localforage.setDriver([
+  localforage.INDEXEDDB,
+  localforage.WEBSQL,
+  localforage.LOCALSTORAGE
+  ]).then(function() {
+  var key = nes.rom.sha1;
+  // var value = 'What we save offline';
+  var value = nes.nvram;
+  value[0] = 65
+  // var value = undefined;
+  var UNKNOWN_KEY = 'unknown_key';
+
+  function saveNVRAM()
+  localforage.setItem(key, value, function() {
+    console.log('Using:' + localforage.driver());
+    console.log('Saved: ' + value);
     
-// Key: SHA-1 of a game ROM
-// Value: Uint8Array with game save data
-localforage.getItem('something', myCallback);
-const savesDB = {};
+  function loadNVRAM
+    localforage.getItem(key, value).then(function(readValue) {
+      console.log('Read: ', readValue);
+    });
 
-function loadNVRAM() {
-  if (nes.nvram && nes.rom.sha1 in savesDB) {
-    nes.nvram.set(savesDB[nes.rom.sha1]);
-  }
-}
-
-function saveNVRAM() {
-  if (nes.nvram) {
-    savesDB[nes.rom.sha1] = cloneNVRAM(nes.nvram)
-  }
-}
-
-function cloneNVRAM(src) {
-  const dst = new Uint8Array(src.length);
-  dst.set(src);
-  return dst;
-}
+    // Since this key hasn't been set yet, we'll get a null value
+    localforage.getItem(UNKNOWN_KEY, function(err, readValue) {
+      console.log('Result of reading ' + UNKNOWN_KEY, readValue);
+    });
+  });
+});
+    
 
     cfxnes({video: {scale: 2.8}});
 
