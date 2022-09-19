@@ -28,36 +28,24 @@
     const {rom} = nes;
     var fps = document.getElementById('fps');
 
-    // Feel free to change the drivers order :)
-localforage.setDriver([
-  localforage.INDEXEDDB,
-  localforage.WEBSQL,
-  localforage.LOCALSTORAGE
-  ]).then(function() {
-  var key = nes.rom.sha1;
-  // var value = 'What we save offline';
-  var value = nes.nvram;
- 
-  // var value = undefined;
-  var UNKNOWN_KEY = 'unknown_key';
-
-  function saveNVRAM()
-  localforage.setItem(key, value, function() {
-    console.log('Using:' + localforage.driver());
-    console.log('Saved: ' + value);
-    
-  function loadNVRAM
-    localforage.getItem(key, value).then(function(readValue) {
-      console.log('Read: ', readValue);
-    });
-
-    // Since this key hasn't been set yet, we'll get a null value
-    localforage.getItem(UNKNOWN_KEY, function(err, readValue) {
-      console.log('Result of reading ' + UNKNOWN_KEY, readValue);
-    });
-  });
+localforage.config({
+    driver      : localforage.LOCALSTORAGE, // Force WebSQL; same as using setDriver()
+    name        : 'Saves',
+    version     : 1.0,
+    size        : 4980736, // Size of database, in bytes. WebSQL-only for now.
+    storeName   : 'nvram_saves', // Should be alphanumeric, with underscores.
+    description : 'nvramsaves'
 });
-    
+
+  // var value = undefined;
+function saveNVRAM() {
+  localforage.setItem(key, value)
+   .then(console.log("Saving"));
+}
+ function loadNVRAM() { 
+  localforage.getItem(key, value)
+   .then(console.log("Loading"));
+}
 
     cfxnes({video: {scale: 2.8}});
 
