@@ -18,6 +18,7 @@
     <button onclick="nes.power()">Power</button>
     <button onclick="nes.reset()">Reset</button>
     <button onclick="fullscreen.enter()">FullScreen</button>
+    <button onclick="saveNVRAM()">Save Progress</button>
   </div>
   <div id="fps"></div>
   <script>
@@ -25,10 +26,30 @@
     const {fullscreen} = nes;
     const {rom} = nes;
     var fps = document.getElementById('fps');
+    
+    
+    const buffer = new ArrayBuffer(8);
+    const uint8 = new Uint8Array(buffer);
+
+  function loadNVRAM() {
+  if (nes.nvram) {
+    return uint8.get(nes.rom.sha1)
+      .then(data => data && nes.nvram.set(data));
+    }
+    return Promise.resolve();
+  }
+    
+  function saveNVRAM() {
+  if (nes.nvram) {
+    return uint8.put(nes.rom.sha1, nes.nvram);
+  }
+  return Promise.resolve();
+  }
 
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
+         .then(loadNVRAM())
          .then(nes.start);
 
     setInterval(function() {
