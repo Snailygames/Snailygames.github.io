@@ -27,6 +27,10 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     
+    localforage.config({
+    name: 'nvram'
+    });
+    
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = nes.rom.sha1;
         var value = new Uint8Array(nes.nvram);
