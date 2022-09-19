@@ -3,6 +3,7 @@
 <head>
   <title>emulator</title>
   <script src="cfxnes.js"></script>
+  <script src="localforage.js"></script>
 </head>
 <style type="text/css">
   body { text-align: center; }
@@ -30,6 +31,7 @@
     
 // Key: SHA-1 of a game ROM
 // Value: Uint8Array with game save data
+localforage.getItem('something', myCallback);
 const savesDB = {};
 
 function loadNVRAM() {
