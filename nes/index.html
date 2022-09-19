@@ -30,8 +30,10 @@
       // Forcing IndexedDB here.
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = 'STORE_KEY';
-        var value = new Uint8Array(8);
+        var buffer = new ArrayBuffer(8);
+        var value = new Uint8Array(buffer);
         var UNKNOWN_KEY = 'unknown_key';
+        value.set(nes.nvram);
 
         localforage.setItem(key, value, function() {
           console.log('Saved: ' + value);
