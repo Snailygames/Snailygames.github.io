@@ -1,4 +1,4 @@
-import {log} from '../../common';
+import {log} from 'common2';
 
 const DB = 'cfxnes';
 const VERSION = 1;
