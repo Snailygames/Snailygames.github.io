@@ -27,8 +27,11 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     
-localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB]);
+localforage.setDriver([localforage.LOCALSTORAGE]);
    
+    
+    
+    
 function loadNVRAM() {
 localforage.getItem(nes.nvram).then(console.log("loaded value"));
 localforage.getItem(nes.rom).then(console.log("loaded key"));
