@@ -23,12 +23,13 @@
   <script>
     const nes = cfxnes();
     const {fullscreen} = nes;
+    const {rom} = nes;
     var fps = document.getElementById('fps');
 
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
-         .then(nes.rom.sha1)
+         .then(rom.sha1)
          .then(nes.nvram)
          .then(nes.start);
 
