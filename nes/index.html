@@ -25,42 +25,16 @@
   <script>
     const nes = cfxnes();
     const {fullscreen} = nes;
-    const {rom} = nes;
     var fps = document.getElementById('fps');
 
-localforage.config({
-    driver      : localforage.LOCALSTORAGE, // Force WebSQL; same as using setDriver()
-    name        : 'Saves',
-    version     : 1.0,
-    size        : 4980736, // Size of database, in bytes. WebSQL-only for now.
-    storeName   : 'nvram_saves', // Should be alphanumeric, with underscores.
-    description : 'nvramsaves'
-});
-    
-  var key = nes.rom.sha1;
-  var value= nes.nvram;
-
-    
-    function loadNVRAM() {
-  if (nes.nvram && nes.rom.sha1 in value, key) {
-    nes.nvram.set(key[nes.rom.sha1])
-    .then(console.log("loading"));
-  }
+function loadNVRAM() {
+localforage.getItem(nes.nvram).then(console.log("loaded value"));
+localforage.getItem(nes.rom).then(console.log("loaded key"));
 }
-
 function saveNVRAM() {
-  if (nes.nvram) {
-    key[nes.rom.sha1] = cloneNVRAM(nes.nvram)
-    console.log("saving");
-  }
+localforage.setItem(nes.nvram).then(console.log("saved value"));
+localforage.setItem(nes.rom.sha1).then(console.log("saved key"));
 }
-
-function cloneNVRAM(src) {
-  const dst = new Uint8Array(src.length);
-  dst.set(src);
-  return dst;
-}
-
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
