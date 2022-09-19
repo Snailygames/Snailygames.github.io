@@ -28,23 +28,27 @@
     var fps = document.getElementById('fps');
     
     
-    const buffer = new ArrayBuffer(8);
-    const uint8 = new Uint8Array(buffer);
+// Key: SHA-1 of a game ROM
+// Value: Uint8Array with game save data
+const savesDB = {};
 
-  function loadNVRAM() {
+function loadNVRAM() {
+  if (nes.nvram && nes.rom.sha1 in savesDB) {
+    nes.nvram.set(savesDB[nes.rom.sha1]);
+  }
+}
+
+function saveNVRAM() {
   if (nes.nvram) {
-    return uint8.get(nes.rom.sha1)
-      .then(data => data && nes.nvram.set(data));
-    }
-    return Promise.resolve();
+    savesDB[nes.rom.sha1] = cloneNVRAM(nes.nvram)
   }
-    
-  function saveNVRAM() {
-  if (nes.nvram) {
-    return uint8.put(nes.rom.sha1, nes.nvram);
-  }
-  return Promise.resolve();
-  }
+}
+
+function cloneNVRAM(src) {
+  const dst = new Uint8Array(src.length);
+  dst.set(src);
+  return dst;
+}
 
     cfxnes({video: {scale: 2.8}});
 
