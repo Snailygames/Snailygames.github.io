@@ -32,8 +32,8 @@ localforage.config({
     name: 'nvram'
 });
     
-        var key = new Uint8Array(nes.rom.sha1);
-        var value = new Uint8Array(nes.nvram);
+        var key = nes.rom.sha1;
+        var value = new Uint8Array(8);
 
           function loadNVRAM() {
           localforage.getItem(key, value).then(console.log("loaded"));
