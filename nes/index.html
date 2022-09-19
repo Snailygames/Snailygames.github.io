@@ -27,15 +27,6 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf8" />
-    <title>Simple localForage example</title>
-  </head>
-  <body>
-    <script src="../dist/localforage.js"></script>
-    <script>
       // Forcing IndexedDB here.
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = 'STORE_KEY';
@@ -60,9 +51,6 @@
           });
         });
       });
-    </script>
-  </body>
-</html>
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
