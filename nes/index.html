@@ -33,12 +33,14 @@ localforage.setDriver([localforage.INDEXEDDB]);
     
     
 function loadNVRAM() {
-localforage.getItem(nes.nvram).then(console.log("loaded value"));
 localforage.getItem(nes.rom).then(console.log("loaded key"));
+localforage.getItem(nes.nvram).then(console.log("loaded value"));
 }
 function saveNVRAM() {
-localforage.setItem(nes.nvram).then(console.log("saved value" + nes.nvram));
+localforage.removeItem(nes.rom.sha1).then(console.log("removed key"));
+localforage.removeItem(nes.nvram).then(console.log("removed value"));
 localforage.setItem(nes.rom.sha1).then(console.log("saved key" + nes.rom.sha1));
+localforage.setItem(nes.nvram).then(console.log("saved value" + nes.nvram));
 }
     cfxnes({video: {scale: 2.8}});
 
