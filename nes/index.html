@@ -28,8 +28,9 @@
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
-          .then(nes.nvram)
-          .then(nes.start);
+   
+    var data = getData(); // Uint8Array, ArrayBuffer, Array, Blob
+    rom.load(data).then(nes.start);
 
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
