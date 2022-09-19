@@ -1,6 +1,6 @@
-import {log} from '../common';
-import {nes} from './common';
-import {nvramStore} from './database';
+import {log} from 'common';
+import {nes} from 'common';
+import {nvramStore} from 'database';
 
 export function loadNVRAM() {
   if (nes.nvram) {
