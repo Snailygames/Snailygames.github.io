@@ -26,11 +26,11 @@
     const {fullscreen} = nes;
     const {rom} = nes;
     var fps = document.getElementById('fps');
-    const STORE = 'nvram';
+
     
 // Key: SHA-1 of a game ROM
 // Value: Uint8Array with game save data
-const savesDB = db.transaction(STORE, 'readwrite');
+const savesDB = {};
 
 function loadNVRAM() {
   if (nes.nvram && nes.rom.sha1 in savesDB) {
