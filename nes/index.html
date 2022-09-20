@@ -54,7 +54,6 @@ function loadNVRAM() {
 function saveNVRAM() {
   if (nes.nvram) {
     console.log(nes.rom.sha1);
-    localforage.removeItem(nes.rom.sha1, {sha1: nes.rom.sha1, data: nes.nvram});
     localforage.setItem(nes.rom.sha1, {sha1: nes.rom.sha1, data: nes.nvram}).catch(error => {
       console.error(error);
     });
@@ -63,7 +62,6 @@ function saveNVRAM() {
     
 function killdata() {
 localforage.clear().then(function() {
-    window.location.reload();
     console.log('Database is now empty.');
 }).catch(function(err) {
     // This code runs if there were any errors
