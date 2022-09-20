@@ -28,6 +28,26 @@
     var fps = document.getElementById('fps');
     cfxnes({video: {scale: 2.8}});
     
+    localforage.config({
+    driver: localforage.INDEXEDDB,
+    name: 'test',
+    storeName: 'nvram'
+    });
+    
+     var key = 'STORE_KEY';
+        var value = new Uint8Array(8);
+        value[0] = 65
+        var UNKNOWN_KEY = 'unknown_key';
+
+ 
+        localforage.setItem(key, value).then(console.log('Saved: ' + value));
+
+         localforage.getItem(key).then(function(readValue) {
+            console.log('Read: ', readValue);
+          }).catch(function(err) {
+            console.error('Read: ', err);
+          });
+    
        nes.rom.load('rom/loz.nes')
          .then(nes.start);
     
