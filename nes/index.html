@@ -35,7 +35,7 @@
     storeName: 'nvram'
     });
     
-  var users = {sha1: 'sha1 data', data: 'nvram data'};
+  var users = {sha1: 'sha1 data', data: nes.nvram};
     
 function loadNVRAM() {
   return localforage.getItem(nes.rom.sha1).then(data => {
