@@ -34,10 +34,11 @@
     storeName: 'nvram'
    });
     
- load();
+        var key = 'STORE_KEY';
+        var value = new Uint8Array(8);
     
  function loadNVRAM() {   
-    localforage.setItem(nes.rom.sha1, nes.nvram).then(function (value) {
+    localforage.setItem(key, value).then(function (value) {
 
     console.log(value);
     }).catch(function(err) {
@@ -47,7 +48,7 @@
     }  
 
     function saveNVRAM() {
-      localforage.getItem(nes.rom.sha1, nes.nvram).then(function(value) {
+      localforage.getItem(key, value).then(function(value) {
     // This code runs once the value has been loaded
     // from the offline store.
     console.log(value);
