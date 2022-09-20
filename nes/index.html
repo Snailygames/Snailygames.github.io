@@ -68,7 +68,7 @@ localforage.clear().then(function() {
     
 
 // Save our users.
-var users = [ {id: 1, fullName: 'Matt'}, {id: 2, fullName: 'Bob'} ];
+var users = [ {id: 1, fullName: 'Matt', id: 2, fullName: 'Bob'} ];
 localforage.setItem('users', users, function(result) {
     console.log(result);
 });
