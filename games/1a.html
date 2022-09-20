@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<title>SnailyGames</title>
+<head>
+  <script src="../nes/cfxnes.js"></script>
+  <script src="../nes/localforage.js"></script>
+<script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
+</head>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #333;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 670px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+<!-- The sidebar -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="">
+
+<div ng-include="'../sidebar.html'"></div>
+
+<!-- Page content -->
+<div class="content">
+<body style="background-color:grey;">
+  
+  <div>
+    <canvas id="cfxnes"></canvas>
+  </div>
+    <script>
+const nes = cfxnes();
+    const {fullscreen} = nes;
+    var fps = document.getElementById('fps');
+    cfxnes({video: {scale: 2.8}});
+    nes.rom.load('../nes/rom/rom.nes')
+    .then(loadNVRAM);
+    
+    localforage.config({
+    driver: localforage.INDEXEDDB,
+    name: 'test',
+    storeName: 'nvram'
+    });
+       
+
+    function loadNVRAM() {
+  return localforage.getItem(nes.rom.sha1).then(data => {
+    if (nes.nvram && data) {
+      nes.nvram.set(data);
+    }
+  }).catch(error => {
+    console.error(error);
+  });
+}
+
+function saveNVRAM() {
+  if (nes.nvram) {
+    localforage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
+      console.error(error);
+    });
+  }
+}
+     
+    
+function killdata() {
+localforage.clear().then(function() {
+    console.log('Database is now empty.');
+}).catch(function(err) {
+    // This code runs if there were any errors
+    console.log(err);
+});
+}
+    
+nes.start();
+    
+  </script>
+  
+  <div ng-include="'../nes/bottom.html'"></div>
+  
+</body>
+</html>
