@@ -48,8 +48,8 @@ function loadNVRAM() {
 
 function saveNVRAM() {
   if (nes.nvram) {
+    console.log(nes.rom.sha1);
     localforage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
-      console.log(nes.rom.sha1)
       console.error(error);
     });
   }
