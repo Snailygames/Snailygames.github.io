@@ -36,13 +36,12 @@
     
  load();
     
- function load() {   
-   nes.rom.load('rom/loz.nes');
+ function loadNVRAM() {   
     localforage.setItem(nes.rom.sha1, nes.nvram).then(function (value) {
-    nes.start();
+
     console.log(value);
     }).catch(function(err) {
-     nes.start();
+
     console.log(err);
     });
     }  
@@ -57,6 +56,10 @@
     console.log(err);
     });
     }
+    
+       nes.rom.load('rom/loz.nes')
+         .then(loadNVRAM())
+         .then(nes.start);
     
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
