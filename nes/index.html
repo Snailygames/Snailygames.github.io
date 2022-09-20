@@ -37,7 +37,7 @@
     storeName: 'nvram'
     });
     
-  var users = {sha1: 'sha1 data', data: nes.nvram};
+  var user = {sha1: nes.rom.sha1, data: nes.nvram};
     
 function loadNVRAM() {
   return localforage.getItem(nes.rom.sha1).then(data => {
@@ -53,7 +53,7 @@ function loadNVRAM() {
 function saveNVRAM() {
   if (nes.nvram) {
     console.log(nes.rom.sha1);
-    localforage.setItem(nes.rom.sha1, users).catch(error => {
+    localforage.setItem(nes.rom.sha1, user).catch(error => {
       console.error(error);
     });
   }
