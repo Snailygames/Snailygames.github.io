@@ -66,7 +66,7 @@ localforage.clear().then(function() {
 });
 }
     
-var obj = { value: 'hello world' };
+var obj = { value: nes.rom.sha1 };
 localStorage.setItem('key', JSON.stringify(obj));
 alert(obj.value);
 
