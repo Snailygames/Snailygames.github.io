@@ -39,27 +39,25 @@
  function load() {   
    nes.rom.load('rom/loz.nes');
     localforage.setItem(nes.rom.sha1, nes.nvram).then(function (value) {
-    // Do other things once the value has been saved.
+    nes.start();
     console.log(value);
-}).catch(function(err) {
-    // This code runs if there were any errors
+    }).catch(function(err) {
+     nes.start();
     console.log(err);
-});
+    });
+    }  
 
-localforage.getItem(nes.rom.sha1, nes.nvram).then(function(value) {
+    function saveNVRAM() {
+      localforage.getItem(nes.rom.sha1, nes.nvram).then(function(value) {
     // This code runs once the value has been loaded
     // from the offline store.
     console.log(value);
-}).catch(function(err) {
-    // This code runs if there were any errors
+    }).catch(function(err) {
+
     console.log(err);
-});
- }  
-
-nes.start();
-
- 
-
+    });
+    }
+    
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
     }, 500);
