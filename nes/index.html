@@ -41,9 +41,8 @@
     
     
 function loadNVRAM() {
-  localforage.getItem(nes.rom.sha1).then(data => {
-    if (nes.nvram && data) {
-      nes.nvram.set(data);
+  localforage.getItem(nes.rom.sha1)
+    .then(data => data && nes.nvram.set(data));
     }
   }).catch(error => {
     console.log("something went wrong in loading")
