@@ -2,6 +2,8 @@
 <html>
 <title>SnailyGames</title>
 <head>
+  <script src="../nes/cfxnes.js"></script>
+  <script src="../nes/localforage.js"></script>
 <script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
@@ -106,12 +108,12 @@ div.content {
     <canvas id="cfxnes"></canvas>
   </div>
     <script>
-         const nes = cfxnes();
+const nes = cfxnes();
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     cfxnes({video: {scale: 2.8}});
-     nes.rom.load('../nes/rom/loz.nes')
-      .then(loadNVRAM);
+    nes.rom.load('../nes/rom/loz.nes')
+    .then(loadNVRAM);
     
     localforage.config({
     driver: localforage.INDEXEDDB,
@@ -147,9 +149,9 @@ localforage.clear().then(function() {
     console.log(err);
 });
 }
-
-nes.start():
-  </script>
+    
+nes.start();
+    
 
   <div ng-include="'../nes/bottom.html'"></div>
   
