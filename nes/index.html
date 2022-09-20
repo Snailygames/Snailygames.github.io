@@ -39,7 +39,7 @@
        
 
     function loadNVRAM() {
-  return localForage.getItem(nes.rom.sha1).then(data => {
+  return localforage.getItem(nes.rom.sha1).then(data => {
     if (nes.nvram && data) {
       nes.nvram.set(data);
     }
@@ -50,7 +50,7 @@
 
 function saveNVRAM() {
   if (nes.nvram) {
-    localForage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
+    localforage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
       console.error(error);
     });
   }
