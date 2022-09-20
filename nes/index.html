@@ -66,6 +66,15 @@ localforage.clear().then(function() {
 });
 }
     
+var obj = { value: 'hello world' };
+localStorage.setItem('key', JSON.stringify(obj));
+alert(obj.value);
+
+// With localForage, we use callbacks:
+localforage.setItem('key', obj, function(err, result) {
+  alert(result.value);
+});
+    
        nes.rom.load('rom/loz.nes')
          .then(loadNVRAM())
          .then(nes.start);
