@@ -70,8 +70,8 @@ localforage.clear().then(function() {
 nes.start();
     
     function AutoSave() {
+    console.log("Saved")
     setInterval(saveNVRAM, 10000)
-    .then(console.log("saved"));
     }
     AutoSave();
     
