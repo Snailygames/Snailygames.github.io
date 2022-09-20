@@ -27,28 +27,16 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     
-localforage.config({
-    driver: localforage.INDEXEDDB,
-    name: 'nvram'
-});
-    
-    var key = nes.rom.sha1;
-    var value = nes.nvram; 
-    
-    function loadNVRAM() {
-      localforage.getItem(key, value);
-    }
-    
-    function saveNVRAM() {
-      localforage.removeItem(key, value);
-      localforage.setItem(key, value);
-    }
     
     cfxnes({video: {scale: 2.8}});
 
       nes.rom.load('rom/loz.nes')
          .then(loadNVRAM())
          .then(nes.start);
+    
+    
+    console.log(nes.nvram);
+    console.log(nes.rom.sha1);
     
 
     setInterval(function() {
