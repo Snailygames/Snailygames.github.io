@@ -40,7 +40,7 @@ localforage.config({
     }
     
     function saveNVRAM() {
-      localStorage.setItem(key, JSON.stringify(value));
+      localforage.setItem(key, value);
     }
     
     cfxnes({video: {scale: 2.8}});
