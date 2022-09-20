@@ -28,14 +28,6 @@
     var fps = document.getElementById('fps');
     cfxnes({video: {scale: 2.8}});
     
-    localforage.config({
-    driver: localforage.INDEXEDDB,
-    name: 'test'
-    storeName: 'nvram'
-   });
-    
-
-    
        nes.rom.load('rom/loz.nes')
          .then(loadNVRAM())
          .then(nes.start);
