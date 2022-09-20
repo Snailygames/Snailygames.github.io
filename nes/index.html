@@ -34,19 +34,26 @@
     storeName: 'nvram'
     });
     
-     var key = 'amongus';
-        var value = new Uint8Array([nes.nvram]);
-        value.set([nes.nvram]);
-    
-        localforage.setItem(key, value).then(console.log('Saved: ' + value));
+function loadNVRAM() {
+  return localForage.getItem(nes.rom.sha1).then(data => {
+    if (nes.nvram && data) {
+      nes.nvram.set(data);
+    }
+  }).catch(error => {
+    console.error(error);
+  });
+}
 
-         localforage.getItem(key).then(function(readValue) {
-            console.log('Read: ', readValue);
-          }).catch(function(err) {
-            console.error('Read: ', err);
-          });
+function saveNVRAM() {
+  if (nes.nvram) {
+    localForage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
+      console.error(error);
+    });
+  }
+}
     
        nes.rom.load('rom/loz.nes')
+         .then(saveNVRAM())
          .then(nes.start);
     
     setInterval(function() {
