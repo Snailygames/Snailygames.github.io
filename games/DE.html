@@ -151,6 +151,11 @@ localforage.clear().then(function() {
 }
     
 nes.start();
+      
+       setInterval(function() {
+      saveNVRAM();
+      console.log("saved")
+    }, 5000);
     
   </script>
   
