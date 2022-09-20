@@ -35,10 +35,9 @@
     });
     
      var key = 'amongus';
-        var value = new Uint8Array(0x2000);
-        var data = [nes.nvram]
-        value.set(data);
-
+        var value = new Uint8Array([nes.nvram]);
+        value.set([nes.nvram]);
+    
         localforage.setItem(key, value).then(console.log('Saved: ' + value));
 
          localforage.getItem(key).then(function(readValue) {
