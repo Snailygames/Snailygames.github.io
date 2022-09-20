@@ -23,3 +23,4 @@ function saveNVRAM() {
 }
 
 loadNVRAM();
+nes.start();
