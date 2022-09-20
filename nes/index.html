@@ -53,7 +53,7 @@ function saveNVRAM() {
 }
     
        nes.rom.load('rom/loz.nes')
-         .then(saveNVRAM())
+         .then(loadNVRAM())
          .then(nes.start);
     
     setInterval(function() {
