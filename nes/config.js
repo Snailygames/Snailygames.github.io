@@ -2,8 +2,6 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     cfxnes({video: {scale: 2.8}});
-    nes.rom.load(roml)
-    .then(loadNVRAM);
     
     localforage.config({
     driver: localforage.INDEXEDDB,
@@ -39,4 +37,6 @@ localforage.clear().then(function() {
     console.log(err);
 });
 }
-    
+
+loadNVRAM();
+nes.start():
