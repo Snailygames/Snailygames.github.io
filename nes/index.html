@@ -30,7 +30,7 @@
           // Forcing IndexedDB here.
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = 'newkey';
-        var value = new Uint8Array(8);
+        var value = new Uint8Array(0x2000);
         value[0] = 65
         var UNKNOWN_KEY = 'unknown_key';
 
