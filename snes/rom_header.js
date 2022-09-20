@@ -1,7 +1,0 @@
-function ROMHeader(){
-	
-}
-
-ROMHeader.prototype = {
-	
-}
