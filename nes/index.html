@@ -66,14 +66,11 @@ localforage.clear().then(function() {
 });
 }
     
-var obj = { sha1: nes.rom.sha1 };
 
-localforage.setItem(nes.rom.sha1, obj).then(function (value) {
-    // Do other things once the value has been saved.
-    console.log(value);
-}).catch(function(err) {
-    // This code runs if there were any errors
-    console.log(err);
+// Save our users.
+var users = [ {id: 1, fullName: 'Matt'}, {id: 2, fullName: 'Bob'} ];
+localForage.setItem('users', users, function(result) {
+    console.log(result);
 });
     
        nes.rom.load('rom/loz.nes')
