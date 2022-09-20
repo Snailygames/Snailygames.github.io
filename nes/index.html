@@ -19,7 +19,8 @@
     <button onclick="nes.power()">Power</button>
     <button onclick="nes.reset()">Reset</button>
     <button onclick="fullscreen.enter()">FullScreen</button>
-    <button onclick="saveNVRAM()">Save Progress</button>
+    <button onclick="loadNVRAM()">Load Data</button>
+    <button onclick="saveNVRAM()">Save Data</button>
     <button onclick="killdata()">Delete All Data</button>
   </div>
   <div id="fps"></div>
@@ -28,6 +29,7 @@
     const {fullscreen} = nes;
     var fps = document.getElementById('fps');
     cfxnes({video: {scale: 2.8}});
+    nes.rom.load('rom/loz.nes')
     
     localforage.config({
     driver: localforage.INDEXEDDB,
@@ -67,9 +69,7 @@ localforage.clear().then(function() {
 });
 }
     
-       nes.rom.load('rom/loz.nes')
-         .then(loadNVRAM())
-         .then(nes.start);
+
     
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
