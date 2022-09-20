@@ -36,10 +36,11 @@ localforage.config({
     var value = nes.nvram; 
     
     function loadNVRAM() {
-      
+      localforage.getItem(key, value);
     }
     
     function saveNVRAM() {
+      localforage.removeItem(key, value);
       localforage.setItem(key, value);
     }
     
