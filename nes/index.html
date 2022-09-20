@@ -69,9 +69,7 @@ localforage.clear().then(function() {
 
 // Save our users.
 var users = {sha1: 'sha1 data', data: 'nvram data'};
-localforage.setItem(nes.rom.sha1, users, function(result) {
-    console.log(result);
-});
+localforage.setItem(nes.rom.sha1, users).then(console.log("test done"));
     
        nes.rom.load('rom/loz.nes')
          .then(loadNVRAM())
