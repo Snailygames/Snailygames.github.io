@@ -35,6 +35,8 @@
     storeName: 'nvram'
     });
     
+ const key = JSON.stringify(nes.rom.sha1);   
+    
 function loadNVRAM() {
   return localforage.getItem(nes.rom.sha1).then(data => {
     if (nes.nvram && data) {
@@ -47,7 +49,7 @@ function loadNVRAM() {
 
 function saveNVRAM() {
   if (nes.nvram) {
-    localforage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
+    localforage.setItem(key, nes.nvram).catch(error => {
       console.error(error);
     });
   }
