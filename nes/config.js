@@ -40,4 +40,3 @@ localforage.clear().then(function() {
 });
 }
     
-nes.start();
