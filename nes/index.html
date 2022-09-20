@@ -31,7 +31,7 @@
       localforage.setDriver(localforage.INDEXEDDB).then(function() {
         var key = 'newkey';
         var value = new Uint8Array(0x2000);
-        value[0] = 65
+        value.set(nes.nvram)
         var UNKNOWN_KEY = 'unknown_key';
 
         localforage.setItem(key, value, function() {
