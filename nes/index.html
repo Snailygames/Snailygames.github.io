@@ -68,7 +68,7 @@ localforage.clear().then(function() {
     
 
 // Save our users.
-var users = {id: 1, sha1: 'sha1 data', id: 2, data: 'nvram data'};
+var users = {sha1: 'sha1 data', data: 'nvram data'};
 localforage.setItem('users', users, function(result) {
     console.log(result);
 });
