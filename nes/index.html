@@ -66,13 +66,14 @@ localforage.clear().then(function() {
 });
 }
     
-var obj = { value: nes.rom.sha1 };
-localStorage.setItem('key', JSON.stringify(obj));
-alert(obj.value);
+var obj = { sha1: nes.rom.sha1 };
 
-// With localForage, we use callbacks:
-localforage.setItem('key', obj, function(err, result) {
-  alert(result.value);
+localforage.setItem(nes.rom.sha1, obj).then(function (value) {
+    // Do other things once the value has been saved.
+    console.log(value);
+}).catch(function(err) {
+    // This code runs if there were any errors
+    console.log(err);
 });
     
        nes.rom.load('rom/loz.nes')
