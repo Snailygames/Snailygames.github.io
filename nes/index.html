@@ -42,6 +42,7 @@ function loadNVRAM() {
       nes.nvram.set(data);
     }
   }).catch(error => {
+    console.log("something went wrong in loading")
     console.error(error);
   });
 }
@@ -57,7 +58,7 @@ function saveNVRAM() {
     
 function killdata() {
 localforage.clear().then(function() {
-    // Run this code once the database has been entirely deleted.
+    window.location.reload();
     console.log('Database is now empty.');
 }).catch(function(err) {
     // This code runs if there were any errors
