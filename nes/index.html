@@ -69,10 +69,10 @@ localforage.clear().then(function() {
     
 nes.start();
     
-    function AutoSave() {
-    setTimeout(saveNVRAM, 1000)
-    }
-    AutoSave();
+    setInterval(function() {
+      console.log("testing")
+    }, 500);
+    
     
     setInterval(function() {
       fps.innerHTML = nes.running ? ('FPS: ' + ~~nes.fps) : '';
