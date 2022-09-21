@@ -112,13 +112,14 @@ div.content {
              padding: 0;
          }
         </style>
-        <script src="js-dos.js"></script>
-        <link href="js-dos.css" rel="stylesheet">
-        <script src="wdosbox.js"></script>
+        <script src="../dos/js-dos.js"></script>
+        <link href="../dos/js-dos.css" rel="stylesheet">
+        <script src="../dos/wdosbox.js"></script>
     </head>
     <body>
         <div id="jsdos" />
         <script>
+         emulators.pathPrefix = "../dos/";
          Dos(document.getElementById("jsdos"))
              .run("../dos/games/doom2.jsdos.zip");
         </script>
