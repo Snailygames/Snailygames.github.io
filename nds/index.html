@@ -104,11 +104,15 @@ div.content {
 
 <body style="background: black;">
     <desmond-player></desmond-player>
+    <input type="file" style="position: absolute; transform: translate(-50%, -50%); left: 50%; top: 95%; color: white;"></input>
     <script src="dist/desmond.min.js"></script>
     <script>
-          window.onload = function() {
+        document.querySelector("input").onchange = function() {
+            document.querySelector("desmond-player").loadURL(URL.createObjectURL(document.querySelector("input").files[0]))
+        }
+      
+        window.onload = function() {
             setTimeout(function() {
-                document.querySelector("desmond-player").loadURL("https://drive.google.com/uc?id=1a3Y7XnNXOwVf7WoMRH2EThkiFv0QB-_Z&export=download&confirm=t&uuid=bb9241cd-791b-4f0d-a26f-4674a1d8f6e1")
                 document.querySelector("desmond-player").shadowRoot.querySelector("#top").style = "position: fixed;transform: translate(-50%, -50%);width: 40%;left: 50%;top: 30%;height: 40%;";
 
                 document.querySelector("desmond-player").shadowRoot.querySelector("#bottom").style = "position: fixed;transform: translate(-50%, -50%);width: 40%;left: 50%;top: 70%;height: 40%;";
@@ -116,6 +120,7 @@ div.content {
         }
     </script>
 </body>
+</html>
   
 </body>
 </html>
