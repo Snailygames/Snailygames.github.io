@@ -120,7 +120,7 @@ div.content {
 		
 		<script type="text/javascript" src="../webretro/embed.js"></script>
 		<script>
-			var frame = webretroEmbed(document.getElementById("webretro-container"), "../webretro/", {system: "snes", rom: "loz2.sfc"});
+			var frame = webretroEmbed(document.getElementById("webretro-container"), "../webretro/", {system: "nentendo 64", rom: "SB64.n64"});
 			document.getElementById("fullscreen").onclick = function() {
 				frame.requestFullscreen();
 			};
