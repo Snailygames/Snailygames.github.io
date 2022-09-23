@@ -96,7 +96,7 @@ div.content {
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body ng-app="">
 
-<div ng-include="'.../sidebar.html'"></div>
+<div ng-include="'../sidebar.html'"></div>
 
 <!-- Page content -->
 <div class="content">
@@ -119,9 +119,9 @@ div.content {
 		<br>
 		<a href="roms/LICENSE.txt">License for the example game "2048"</a>
 		
-		<script type="text/javascript" src="embed.js"></script>
+		<script type="text/javascript" src="../webretro/embed.js"></script>
 		<script>
-			var frame = webretroEmbed(document.getElementById("webretro-container"), "../", {system: "nes", rom: "loz.nes"});
+			var frame = webretroEmbed(document.getElementById("webretro-container"), "../webretro/", {system: "nes", rom: "loz.nes"});
 			document.getElementById("fullscreen").onclick = function() {
 				frame.requestFullscreen();
 			};
