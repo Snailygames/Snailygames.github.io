@@ -129,7 +129,7 @@
         <h1>DS Player</h1>
         <div id="loading">Loading...</div>
         <div id="loadrom" hidden>
-            <input id="rom" type="file" hidden>
+            <input id="rom" type="file">
             <button style="width:calc(100% - 2em);margin: 1em;" id="btn-choose-file">Choose File (or
                 drag/drop)...</button><br>
         </div>
@@ -249,19 +249,5 @@
     <script src="js/app.js"></script>
     <script src="js/nds.js"></script>
 
-            function checkSaveGame() {
-            var saveUpdateFlag = Module._savUpdateChangeFlag()
-            if ((saveUpdateFlag == 0) && (prevSaveFlag == 1)) {
-                var size = Module._savGetSize()
-                if ((size > 0) && (isSaveSupported)) {
-                    var ptr = Module._savGetPointer(0)
-                    var tmpSaveBuf = new Uint8Array(size)
-                    tmpSaveBuf.set(Module.HEAPU8.subarray(ptr, ptr + size))
-                    localforage.setItem('sav-' + gameID, tmpSaveBuf)
-                    showMsg('Auto saving...')
-                }
-            }
-            prevSaveFlag = saveUpdateFlag
-        }
 
 </body></html>
