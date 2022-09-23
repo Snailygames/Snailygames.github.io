@@ -2,8 +2,6 @@
 <html>
 <title>SnailyGames</title>
 <head>
-  <script src="../nes/cfxnes.js"></script>
-  <script src="../nes/localforage.js"></script>
 <script async src="https://arc.io/widget.min.js#ad7ZgW5u"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favivon.ico">
 </head>
@@ -104,62 +102,29 @@ div.content {
 <div class="content">
 <body style="background-color:grey;">
   
-  <div>
-    <canvas id="cfxnes"></canvas>
-  </div>
-    <script>
-const nes = cfxnes();
-    const {fullscreen} = nes;
-    var fps = document.getElementById('fps');
-    cfxnes({video: {scale: 2.8}});
-    nes.rom.load('../nes/rom/KI.nes')
-    .then(loadNVRAM);
-    
-    localforage.config({
-    driver: localforage.INDEXEDDB,
-    name: 'test',
-    storeName: 'nvram'
-    });
-       
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			#webretro-container {
+				width: 800px;
+				height: 600px;
+			}
+		</style>
+	</head>
+		<div id="webretro-container"></div>
+		<br>
+		<input type="button" id="fullscreen" value="Fullscreen">
+		<br>
+		<br>
 
-    function loadNVRAM() {
-  return localforage.getItem(nes.rom.sha1).then(data => {
-    if (nes.nvram && data) {
-      nes.nvram.set(data);
-    }
-  }).catch(error => {
-    console.error(error);
-  });
-}
-
-function saveNVRAM() {
-  if (nes.nvram) {
-    localforage.setItem(nes.rom.sha1, nes.nvram).catch(error => {
-      console.error(error);
-    });
-  }
-}
-     
-    
-function killdata() {
-localforage.clear().then(function() {
-    console.log('Database is now empty.');
-}).catch(function(err) {
-    // This code runs if there were any errors
-    console.log(err);
-});
-}
-    
-nes.start();
-      
-            setInterval(function() {
-      saveNVRAM();
-      console.log("saved")
-    }, 5000);
-    
-  </script>
-  
-  <div ng-include="'../nes/bottom.html'"></div>
+		
+		<script type="text/javascript" src="../webretro/embed.js"></script>
+		<script>
+			var frame = webretroEmbed(document.getElementById("webretro-container"), "../webretro/", {system: "nes", rom: "KI.nes"});
+			document.getElementById("fullscreen").onclick = function() {
+				frame.requestFullscreen();
+			};
+		</script>
   
 </body>
 </html>
