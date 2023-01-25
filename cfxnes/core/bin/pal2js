@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+
+const {argv, stdout} = process;
+const executable = path.basename(argv[1]);
+const inputFile = argv[2];
+const outputFile = argv[3];
+
+if (!inputFile) {
+  stdout.write(`Usage: ${executable} input-file [output-file]\n`);
+  stdout.write('Converts palette in .pal format to base64 string wrapped in ES6 module.\n');
+  process.exit(0);
+}
+
+const input = fs.readFileSync(inputFile);
+const output = outputFile ? fs.createWriteStream(outputFile) : stdout;
+
+output.write('// Converted from ' + path.basename(inputFile) + ' using ' + executable + '\n');
+output.write('export default \'');
+output.write(input.toString('base64'));
+output.write('\';\n');
+
+if (output !== stdout) {
+  output.end();
+}

@@ -1,0 +1,26 @@
+.controls-device {
+  margin: 0;
+}
+
+.controls-device-port {
+  display: inline;
+  font-weight: bold;
+
+  &::after {
+    content: " : ";
+  }
+}
+
+.controls-device-device {
+  display: inline;
+  margin: 0;
+}
+
+.controls-device-label {
+  font-weight: bold;
+}
+
+.controls-device-select {
+  display: block;
+  margin-top: 1rem;
+}
